@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://b2jdqt2k4mfl8"]
+
+[ext_resource type="Texture2D" uid="uid://3j4m5qibqs8n" path="res://images/particle_dot.svg" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://b1s7xx3hkmvg7" path="res://scenes/players.gd" id="1_g2els"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8vuu"]
+size = Vector2(16, 16)
+
+[sub_resource type="QuadMesh" id="QuadMesh_3vyb7"]
+
+[sub_resource type="Curve" id="Curve_qhqgy"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_g2els"]
+curve = SubResource("Curve_qhqgy")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g2els"]
+lifetime_randomness = 0.18
+particle_flag_disable_z = true
+angle_min = -365.5
+angle_max = 365.5
+direction = Vector3(1, 1, 1)
+spread = 140.422
+initial_velocity_min = 70.11
+initial_velocity_max = 270.11
+gravity = Vector3(0, -0.085, 0)
+linear_accel_min = 79.31
+linear_accel_max = 100.0
+radial_accel_min = -2.23517e-06
+radial_accel_max = -2.23517e-06
+tangential_accel_min = -254.1
+tangential_accel_max = 220.55
+scale_min = 0.2
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_g2els")
+scale_over_velocity_min = 1.0
+scale_over_velocity_max = 1.0
+
+[node name="player" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_g2els")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_u8vuu")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+scale = Vector2(16, 16)
+mesh = SubResource("QuadMesh_3vyb7")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 16
+texture = ExtResource("1_3vyb7")
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_g2els")

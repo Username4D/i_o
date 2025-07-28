@@ -1,0 +1,55 @@
+extends CharacterBody2D
+
+# Character Stats/Variables
+
+var speed = 0
+var accel = 4
+var friction = 30
+var max_speed = 270
+
+var jump_strength = -150
+var gravity = 6
+
+# conplayer tracking
+
+@export var positions = []
+@export var con_active = false
+
+# player status
+
+@export var alive = true
+
+func _physics_process(delta: float) -> void:
+	if Input.get_axis("ui_left", "ui_right")  != 0 and accel != 0 and alive:
+		if con_active == false:
+			positions.clear()
+			con_active = true
+		if Input.get_axis("ui_left", "ui_right") / abs(Input.get_axis("ui_left", "ui_right")) != speed/abs(speed):
+			speed = move_toward(speed, Input.get_axis("ui_left", "ui_right") / abs(Input.get_axis("ui_left", "ui_right")) * max_speed, friction)
+		else:
+			speed = move_toward(speed, Input.get_axis("ui_left", "ui_right") / abs(Input.get_axis("ui_left", "ui_right")) * max_speed, accel)
+	else:
+		speed = move_toward(speed, 0, friction / 2)
+		
+	velocity.x = speed
+	velocity.y += gravity
+	if Input.is_action_just_pressed("ui_jump") and is_on_floor():
+		velocity.y = jump_strength
+		if con_active == false:
+			positions.clear()
+			con_active = true
+	move_and_slide()
+	positions.append(self.position)
+	
+func die() -> void:
+	alive = false
+	$MeshInstance2D.visible = false
+	$GPUParticles2D.emitting = true
+	gravity = 0
+	speed = 0
+	accel = 0
+	velocity = Vector2.ZERO
+	friction = 0
+	jump_strength = 0
+	print('died')
+	con_active = false
