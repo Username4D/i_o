@@ -24,22 +24,36 @@ func _physics_process(delta: float) -> void:
 		if con_active == false:
 			positions.clear()
 			con_active = true
-		if Input.get_axis("ui_left", "ui_right") / abs(Input.get_axis("ui_left", "ui_right")) != speed/abs(speed):
-			speed = move_toward(speed, Input.get_axis("ui_left", "ui_right") / abs(Input.get_axis("ui_left", "ui_right")) * max_speed, friction)
+		if speed != 0:
+			if Input.get_axis("ui_left", "ui_right") / abs(Input.get_axis("ui_left", "ui_right")) != speed/abs(speed):
+				speed = move_toward(speed, Input.get_axis("ui_left", "ui_right") / abs(Input.get_axis("ui_left", "ui_right")) * max_speed, friction)
+			else:
+				speed = move_toward(speed, Input.get_axis("ui_left", "ui_right") / abs(Input.get_axis("ui_left", "ui_right")) * max_speed, accel)
 		else:
 			speed = move_toward(speed, Input.get_axis("ui_left", "ui_right") / abs(Input.get_axis("ui_left", "ui_right")) * max_speed, accel)
+			
 	else:
 		speed = move_toward(speed, 0, friction / 2)
-		
+	if is_on_wall_only() and Input.get_axis("ui_left", "ui_right")  != 0 and velocity.y > 0:
+		gravity = 3
+	else:
+		gravity = 6
 	velocity.x = speed
 	velocity.y += gravity
-	if Input.is_action_just_pressed("ui_jump") and is_on_floor():
+	if Input.is_action_pressed("ui_jump") and is_on_floor():
 		velocity.y = jump_strength
+		if con_active == false:
+			positions.clear()
+			con_active = true
+	if Input.is_action_just_pressed("ui_jump") and is_on_wall_only():
+		velocity.y = jump_strength
+		speed *= -1
 		if con_active == false:
 			positions.clear()
 			con_active = true
 	move_and_slide()
 	positions.append(self.position)
+	
 	
 func die() -> void:
 	alive = false

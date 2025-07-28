@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://disvp5c67prcm"]
+[gd_scene load_steps=5 format=3 uid="uid://disvp5c67prcm"]
 
 [ext_resource type="PackedScene" uid="uid://b2jdqt2k4mfl8" path="res://scenes/player.tscn" id="1_g7g4h"]
 [ext_resource type="PackedScene" uid="uid://d3dwaslf4elb6" path="res://scenes/conplayer.tscn" id="3_nd71p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j8ivh"]
 size = Vector2(1304, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nd71p"]
+size = Vector2(96, 800)
 
 [node name="test_scene" type="Node2D"]
 
@@ -15,6 +18,14 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(652, 480)
 shape = SubResource("RectangleShape2D_j8ivh")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1008, 272)
+shape = SubResource("RectangleShape2D_nd71p")
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
+color = Color(0.19, 0.19, 0.19, 1)
+polygon = PackedVector2Array(0, 448, 0, 512, 1056, 512, 1056, -128, 960, -128, 960, 448)
 
 [node name="players" type="Node2D" parent="."]
 
