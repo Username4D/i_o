@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://disvp5c67prcm"]
+[gd_scene load_steps=7 format=3 uid="uid://disvp5c67prcm"]
 
 [ext_resource type="PackedScene" uid="uid://b2jdqt2k4mfl8" path="res://scenes/player.tscn" id="1_g7g4h"]
+[ext_resource type="PackedScene" uid="uid://dvxa5l22abk14" path="res://scenes/spike.tscn" id="3_7ddre"]
 [ext_resource type="PackedScene" uid="uid://d3dwaslf4elb6" path="res://scenes/conplayer.tscn" id="3_nd71p"]
+[ext_resource type="PackedScene" uid="uid://82281oi4eu6c" path="res://scenes/orb.tscn" id="4_7ddre"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j8ivh"]
 size = Vector2(1304, 64)
@@ -34,6 +36,15 @@ modulate = Color(1, 0.647059, 1, 1)
 position = Vector2(32, 440)
 floor_block_on_wall = false
 
-[node name="Area2D" parent="players" instance=ExtResource("3_nd71p")]
+[node name="conplayer" parent="players" instance=ExtResource("3_nd71p")]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(32, 440)
+
+[node name="TextureRect" parent="." instance=ExtResource("3_7ddre")]
+offset_left = 320.0
+offset_top = 416.0
+offset_right = 832.0
+offset_bottom = 544.0
+
+[node name="orb" parent="." instance=ExtResource("4_7ddre")]
+position = Vector2(544, 384)

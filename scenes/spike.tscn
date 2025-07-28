@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvxa5l22abk14"]
+
+[ext_resource type="Texture2D" uid="uid://1e0d5mowt1ev" path="res://images/spike.svg" id="1_7a7y0"]
+[ext_resource type="Script" uid="uid://uhw3xk3x8tmy" path="res://texture_rect.gd" id="2_d2mqm"]
+
+[node name="TextureRect" type="TextureRect"]
+offset_right = 128.0
+offset_bottom = 128.0
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_7a7y0")
+stretch_mode = 1
+script = ExtResource("2_d2mqm")
+
+[node name="spike" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="spike"]
+polygon = PackedVector2Array(32, 128, 64, 32, 96, 128)
+
+[connection signal="body_entered" from="spike" to="." method="_on_spike_body_entered"]

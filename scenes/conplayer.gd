@@ -24,3 +24,7 @@ func _on_body_entered(body: Node2D) -> void:
 	print(killing)
 	if body.is_in_group("player") and killing:
 		body.die()
+
+func die():
+	$GPUParticles2D.emitting = true
+	$MeshInstance2D.visible = false

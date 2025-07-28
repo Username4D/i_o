@@ -7,7 +7,7 @@ var accel = 4
 var friction = 30
 var max_speed = 270
 
-var jump_strength = -150
+var jump_strength = -200
 var gravity = 6
 
 # conplayer tracking
@@ -18,6 +18,11 @@ var gravity = 6
 # player status
 
 @export var alive = true
+
+# orb interaction
+
+@export var touching_orb = false
+@export var orb: Node
 
 func _physics_process(delta: float) -> void:
 	if Input.get_axis("ui_left", "ui_right")  != 0 and accel != 0 and alive:
@@ -51,6 +56,9 @@ func _physics_process(delta: float) -> void:
 		if con_active == false:
 			positions.clear()
 			con_active = true
+	if Input.is_action_just_pressed("ui_jump") and touching_orb:
+		velocity.y = jump_strength
+		orb.use()
 	move_and_slide()
 	positions.append(self.position)
 	
