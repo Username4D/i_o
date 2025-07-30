@@ -38,6 +38,7 @@ scale_over_velocity_min = 1.0
 scale_over_velocity_max = 1.0
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
+disable_mode = 1
 script = ExtResource("1_g2els")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

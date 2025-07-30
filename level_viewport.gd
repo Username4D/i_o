@@ -11,10 +11,14 @@ func _ready() -> void:
 	$timers/silver.wait_time = lvl.get_meta("silver_time")
 	$timers/gold.wait_time = lvl.get_meta("gold_time")
 	$level.add_child(lvl)
+	apply_colors(lvl, lvl.get_meta("palette"))
+	ui_handler.fin.connect(fin)
 	
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_restart"):
 		self.get_node('level').get_child(0).queue_free()
+		if running:
+			ui_handler.start.emit()
 		$timers/bronze.paused = true
 		$timers/silver.paused = true
 		$timers/gold.paused = true
@@ -25,6 +29,8 @@ func _physics_process(delta: float) -> void:
 		running = false
 		$ui.get_node("medal display").visible = true
 		$ui.get_node("medal display").frame = 0
+		apply_colors(lvl, lvl.get_meta("palette"))
+		
 	
 	if player:
 		if player.alive == false:
@@ -70,3 +76,21 @@ func _on_gold_timeout() -> void:
 
 func round_to_dec(num, digit):
 	return round(num * pow(10.0, digit)) / pow(10.0, digit)
+
+func apply_colors(obj, colors) -> void:
+	obj.get_node("bg").scale *= 100
+	obj.get_node("bg").modulate = colors[1]
+	obj.get_node("blocks").modulate = colors[2]
+	obj.get_node("gp_elements").modulate = colors[0]
+	obj.get_node("players").modulate = colors[0]
+	obj.get_node("foreground").modulate = colors[3]
+	
+	
+func fin():
+	$timers/bronze.paused = true
+	$timers/silver.paused = true
+	$timers/gold.paused = true
+	
+	
+	
+	

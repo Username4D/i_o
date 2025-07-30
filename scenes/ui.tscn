@@ -84,7 +84,6 @@ anim_offset_max = 0.35
 script = ExtResource("1_gdt2y")
 
 [node name="Label" type="Label" parent="."]
-offset_top = 32.0
 offset_right = 1152.0
 offset_bottom = 96.0
 text = "11:00"
@@ -93,13 +92,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="medal display" type="AnimatedSprite2D" parent="."]
-position = Vector2(576, 576)
+position = Vector2(576, 592)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_ml7nw")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_8dubc")
-position = Vector2(561, 576)
+position = Vector2(561, 592)
 emitting = false
 amount = 1
 texture = ExtResource("5_wm3ai")
@@ -110,7 +109,7 @@ process_material = SubResource("ParticleProcessMaterial_p7vwb")
 
 [node name="right" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_8dubc")
-position = Vector2(585, 576)
+position = Vector2(585, 592)
 emitting = false
 amount = 1
 texture = ExtResource("5_wm3ai")

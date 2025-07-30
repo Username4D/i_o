@@ -1,12 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://d3dwaslf4elb6"]
+[gd_scene load_steps=7 format=3 uid="uid://d3dwaslf4elb6"]
 
 [ext_resource type="Script" uid="uid://pjgcga18lsk1" path="res://scenes/conplayer.gd" id="1_lsitu"]
 [ext_resource type="Texture2D" uid="uid://3j4m5qibqs8n" path="res://images/particle_dot.svg" id="2_rkb5i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ph8o1"]
 size = Vector2(16, 16)
-
-[sub_resource type="QuadMesh" id="QuadMesh_lsitu"]
 
 [sub_resource type="Curve" id="Curve_o22e3"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -43,11 +41,6 @@ script = ExtResource("1_lsitu")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ph8o1")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-modulate = Color(1, 0.490196, 1, 1)
-scale = Vector2(16, 16)
-mesh = SubResource("QuadMesh_lsitu")
-
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 16
@@ -55,5 +48,12 @@ texture = ExtResource("2_rkb5i")
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_ap6i2")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+scale = Vector2(0.5, 0.5)
+polygon = PackedVector2Array(-16, -16, -16, 8, -8, 8, -8, -8, 8, -8, 8, 8, 16, 8, 16, -16)
+
+[node name="Polygon2D2" type="Polygon2D" parent="Polygon2D"]
+polygon = PackedVector2Array(-16, 16, 16, 16, 16, -8, 8, -8, 8, 8, -8, 8, -8, -8, -16, -8)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

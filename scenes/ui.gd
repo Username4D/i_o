@@ -78,3 +78,41 @@ func particle(i):
 	$right.emitting = true
 	
 	$GPUParticles2D.emitting = true
+
+func _ready() -> void:
+	ui_handler.fin.connect(transition_end)
+	ui_handler.start.connect(transition_start)
+func transition_end():
+	if self.get_parent().get_node("level").get_child(0):
+		
+		print("lol")
+		for i in range(20, 100, 2):
+			self.get_parent().get_node("level").get_child(0).get_node("ColorRect").material.set_shader_parameter("blur_strength", i / 20)
+			
+			$Label.position.y =easeInOutQuad(float(i - 22) / 80) * 224
+			$"medal display".position.y = 592 - easeInOutQuad(float(i - 22) / 80) * 224
+			
+			
+			await get_tree().process_frame
+			await get_tree().process_frame
+			await get_tree().process_frame
+	
+func transition_start():
+	if self.get_parent().get_node("level").get_child(0):
+		
+		print("lol")
+		for i in range(20, 100, 2):
+			self.get_parent().get_node("level").get_child(0).get_node("ColorRect").material.set_shader_parameter("blur_strength", 4.01 - i / 20)
+			
+			$Label.position.y = 224 - easeInOutQuad(float(i - 22) / 80) * 224
+			$"medal display".position.y = 368 + easeInOutQuad(float(i - 22) / 80) * 224
+			
+			
+			await get_tree().process_frame
+
+
+	
+
+		
+func easeInOutQuad(x) -> float:
+	return 2 * x * x if x < 0.5 else 1 - pow(-2 * x + 2, 2) / 2

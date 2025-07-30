@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckimmf2u0g3lc"]
+
+[ext_resource type="PackedScene" uid="uid://b2jdqt2k4mfl8" path="res://scenes/player.tscn" id="1_3423k"]
+[ext_resource type="PackedScene" uid="uid://d3dwaslf4elb6" path="res://scenes/conplayer.tscn" id="2_1skr1"]
+
+[node name="players" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_3423k")]
+position = Vector2(32, 440)
+floor_block_on_wall = false
+
+[node name="conplayer" parent="." instance=ExtResource("2_1skr1")]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(32, 440)

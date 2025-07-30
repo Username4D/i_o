@@ -23,9 +23,11 @@ var gravity = 6
 
 @export var touching_orb = false
 @export var orb: Node
-
+@export var not_finished = true
 func _physics_process(delta: float) -> void:
-	if Input.get_axis("ui_left", "ui_right")  != 0 and accel != 0 and alive:
+	
+		
+	if Input.get_axis("ui_left", "ui_right")  != 0 and accel != 0 and alive and not_finished:
 		if con_active == false:
 			positions.clear()
 			
@@ -66,6 +68,8 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_jump") and touching_orb:
 		velocity.y = jump_strength
 		orb.use()
+	if  not con_active:
+		velocity = Vector2.ZERO
 	move_and_slide()
 	positions.append(self.position)
 	
@@ -80,4 +84,10 @@ func die() -> void:
 	velocity = Vector2.ZERO
 	friction = 0
 	jump_strength = 0
+	con_active = false
+
+func fin():
+	self.get_parent().get_node("conplayer").die()
+	not_finished = false
+	gravity = 0 
 	con_active = false
