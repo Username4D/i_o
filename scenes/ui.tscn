@@ -1,0 +1,119 @@
+[gd_scene load_steps=17 format=3 uid="uid://dbkck550073d1"]
+
+[ext_resource type="Script" uid="uid://6v2swyvwpexk" path="res://scenes/ui.gd" id="1_gdt2y"]
+[ext_resource type="Texture2D" uid="uid://cclmk8tpueppx" path="res://images/medals/gold_lost.svg" id="2_wm3ai"]
+[ext_resource type="Texture2D" uid="uid://cubugandx88d3" path="res://images/medals/silver_lost.svg" id="3_8dubc"]
+[ext_resource type="Texture2D" uid="uid://hl02tjhbhk8b" path="res://images/medals/bronze_lost.svg" id="4_p7vwb"]
+[ext_resource type="Texture2D" uid="uid://chv3ccflfa3q6" path="res://images/medals/all medals.svg" id="5_wm3ai"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_n86wo"]
+font_size = 41
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ml7nw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wm3ai")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8dubc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_p7vwb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8dubc"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_wm3ai"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.00531916, 1), 0.0, 0.0, 0, 0, Vector2(0.526596, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_8dubc"]
+curve = SubResource("Curve_wm3ai")
+
+[sub_resource type="Curve" id="Curve_p7vwb"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.820225), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ktti3"]
+curve = SubResource("Curve_p7vwb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p7vwb"]
+particle_flag_disable_z = true
+direction = Vector3(-0.6, -1.5, 0)
+spread = 0.0
+initial_velocity_min = 35.0
+initial_velocity_max = 45.0
+gravity = Vector3(10, 200, 0)
+scale_min = 0.5
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_ktti3")
+alpha_curve = SubResource("CurveTexture_8dubc")
+anim_offset_min = 0.35
+anim_offset_max = 0.35
+
+[sub_resource type="Curve" id="Curve_8dubc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.473404, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_p7vwb"]
+curve = SubResource("Curve_8dubc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wm3ai"]
+direction = Vector3(0.6, -1.5, 0)
+spread = 0.0
+initial_velocity_min = 35.0
+initial_velocity_max = 45.0
+gravity = Vector3(-10, 200, 0)
+scale_min = 0.5
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_ktti3")
+alpha_curve = SubResource("CurveTexture_p7vwb")
+anim_offset_min = 0.35
+anim_offset_max = 0.35
+
+[node name="ui" type="CanvasLayer"]
+script = ExtResource("1_gdt2y")
+
+[node name="Label" type="Label" parent="."]
+offset_top = 32.0
+offset_right = 1152.0
+offset_bottom = 96.0
+text = "11:00"
+label_settings = SubResource("LabelSettings_n86wo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="medal display" type="AnimatedSprite2D" parent="."]
+position = Vector2(576, 576)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_ml7nw")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_8dubc")
+position = Vector2(561, 576)
+emitting = false
+amount = 1
+texture = ExtResource("5_wm3ai")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_p7vwb")
+
+[node name="right" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_8dubc")
+position = Vector2(585, 576)
+emitting = false
+amount = 1
+texture = ExtResource("5_wm3ai")
+lifetime = 0.5
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_wm3ai")

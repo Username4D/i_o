@@ -16,12 +16,10 @@ func _physics_process(delta: float) -> void:
 	elif player.con_active:
 		self.modulate.a = 0.033* len(player.positions)
 	for i in get_overlapping_bodies():
-		print(i.name)
 		if i.is_in_group("player") and killing:
 			i.die()
 
 func _on_body_entered(body: Node2D) -> void:
-	print(killing)
 	if body.is_in_group("player") and killing:
 		body.die()
 

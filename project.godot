@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="i_o"
-run/main_scene="uid://disvp5c67prcm"
+run/main_scene="uid://dtdfxdn175v0n"
 config/features=PackedStringArray("4.4")
 config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [editor]
 

@@ -1,8 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://dtdfxdn175v0n"]
+[gd_scene load_steps=3 format=3 uid="uid://dtdfxdn175v0n"]
 
 [ext_resource type="Script" uid="uid://mtdaqv0knq3o" path="res://level_viewport.gd" id="1_n86wo"]
+[ext_resource type="PackedScene" uid="uid://dbkck550073d1" path="res://scenes/ui.tscn" id="2_fkm5r"]
 
 [node name="level_viewport" type="Node2D"]
 script = ExtResource("1_n86wo")
 
 [node name="level" type="Node2D" parent="."]
+
+[node name="timers" type="Node2D" parent="."]
+
+[node name="bronze" type="Timer" parent="timers"]
+one_shot = true
+
+[node name="silver" type="Timer" parent="timers"]
+one_shot = true
+
+[node name="gold" type="Timer" parent="timers"]
+one_shot = true
+
+[node name="ui" parent="." instance=ExtResource("2_fkm5r")]
+
+[connection signal="timeout" from="timers/bronze" to="." method="_on_bronze_timeout"]
+[connection signal="timeout" from="timers/silver" to="." method="_on_silver_timeout"]
+[connection signal="timeout" from="timers/gold" to="." method="_on_gold_timeout"]

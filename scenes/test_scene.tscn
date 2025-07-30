@@ -12,6 +12,9 @@ size = Vector2(1304, 64)
 size = Vector2(96, 800)
 
 [node name="test_scene" type="Node2D"]
+metadata/bronze_time = 12.0
+metadata/silver_time = 8.0
+metadata/gold_time = 4.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 3
