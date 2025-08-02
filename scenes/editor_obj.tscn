@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bc5s2nsriqssm"]
+
+[ext_resource type="Script" uid="uid://cqckibex8r1dy" path="res://scripts/editor_obj.gd" id="1_qpotj"]
+[ext_resource type="Texture2D" uid="uid://cwnecl2ap7dnd" path="res://resc/editor_obj.tres" id="2_jo3ia"]
+[ext_resource type="Shader" uid="uid://d18prp1wwbl3e" path="res://scenes/editor_obj.gdshader" id="2_tq7bu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w18tq"]
+resource_local_to_scene = true
+shader = ExtResource("2_tq7bu")
+shader_parameter/scale = Vector2(1, 1)
+shader_parameter/regionPosition = Vector2(32, 0)
+shader_parameter/regionSize = Vector2(31.999, 31.999)
+shader_parameter/tint = Vector4(0.1, 0.1, 0.1, 1)
+
+[node name="editor_obj" type="Node2D"]
+script = ExtResource("1_qpotj")
+
+[node name="TextureRect" type="Sprite2D" parent="."]
+modulate = Color(0.73, 0.73, 0.73, 1)
+material = SubResource("ShaderMaterial_w18tq")
+texture = ExtResource("2_jo3ia")
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 48.0
+offset_bottom = 48.0
+scale = Vector2(0.5, 0.5)
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

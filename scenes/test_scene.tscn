@@ -1,17 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://disvp5c67prcm"]
+[gd_scene load_steps=7 format=3 uid="uid://disvp5c67prcm"]
 
 [ext_resource type="Shader" uid="uid://diw2qvsudnia7" path="res://resc/blur.gdshader" id="1_3qnke"]
 [ext_resource type="PackedScene" uid="uid://ckimmf2u0g3lc" path="res://players_default.tscn" id="1_nd71p"]
-[ext_resource type="PackedScene" uid="uid://dvxa5l22abk14" path="res://scenes/spike.tscn" id="3_7ddre"]
-[ext_resource type="PackedScene" uid="uid://82281oi4eu6c" path="res://scenes/orb.tscn" id="4_7ddre"]
 [ext_resource type="PackedScene" uid="uid://ogckpwtfoce7" path="res://scenes/block.tscn" id="4_qjeyg"]
-[ext_resource type="PackedScene" uid="uid://dtiqc7x3ls0y3" path="res://scenes/fin.tscn" id="5_qjeyg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wtsjf"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_7ddre"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3qnke"]
+resource_local_to_scene = true
 shader = ExtResource("1_3qnke")
 shader_parameter/blur_radius = 32
 shader_parameter/Darkness = 0.0
@@ -32,32 +30,21 @@ position = Vector2(64, 0)
 
 [node name="blocks" type="Node2D" parent="."]
 
-[node name="TextureRect" parent="blocks" instance=ExtResource("3_7ddre")]
-offset_left = 352.0
-offset_top = 512.0
-offset_right = 864.0
-offset_bottom = 640.0
-
 [node name="block" parent="blocks" instance=ExtResource("4_qjeyg")]
 position = Vector2(544, 640)
-scale = Vector2(24, 3)
+scale = Vector2(48, 6)
 
 [node name="block2" parent="blocks" instance=ExtResource("4_qjeyg")]
 position = Vector2(576, 6.10352e-05)
-scale = Vector2(24, 3)
+scale = Vector2(48, 6)
 
 [node name="block3" parent="blocks" instance=ExtResource("4_qjeyg")]
 position = Vector2(0, 352)
-scale = Vector2(2, 16)
+scale = Vector2(4, 32)
 
 [node name="block4" parent="blocks" instance=ExtResource("4_qjeyg")]
 position = Vector2(1152, 288)
-scale = Vector2(2, 16)
-
-[node name="gp_elements" type="Node2D" parent="."]
-
-[node name="orb" parent="gp_elements" instance=ExtResource("4_7ddre")]
-position = Vector2(704, 480)
+scale = Vector2(4, 32)
 
 [node name="bg" type="MeshInstance2D" parent="."]
 z_index = -2
@@ -69,10 +56,9 @@ mesh = SubResource("QuadMesh_7ddre")
 position = Vector2(576, 320)
 scale = Vector2(12.16, 7.04)
 
-[node name="fin" parent="." instance=ExtResource("5_qjeyg")]
-position = Vector2(832, 416)
-
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_3qnke")
 offset_right = 1216.0
 offset_bottom = 704.0
+
+[node name="obj" type="Node2D" parent="."]

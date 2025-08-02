@@ -1,0 +1,159 @@
+[gd_scene load_steps=14 format=3 uid="uid://hwriqj5jbxr6"]
+
+[ext_resource type="Script" uid="uid://brcso5n75ip8s" path="res://scenes/editor.gd" id="1_ba0ut"]
+[ext_resource type="Texture2D" uid="uid://cm3wgmpvhntej" path="res://images/fin.svg" id="2_q68jb"]
+[ext_resource type="Texture2D" uid="uid://1e0d5mowt1ev" path="res://images/spike.svg" id="3_xg7d5"]
+[ext_resource type="Shader" uid="uid://doof63a004w0v" path="res://resc/grid.gdshader" id="4_q68jb"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_sldah"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sldah"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b1cmn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pxqd5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b1cmn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ba0ut"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pxqd5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q68jb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xg7d5"]
+shader = ExtResource("4_q68jb")
+shader_parameter/color_rejilla = Color(1, 1, 1, 0.352941)
+shader_parameter/filas = 14
+shader_parameter/columnas = 32
+shader_parameter/tamano_cuadro = 45.47
+
+[node name="editor" type="Node2D"]
+script = ExtResource("1_ba0ut")
+
+[node name="border" type="Node2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="border"]
+color = Color(0.41, 0.41, 0.41, 1)
+polygon = PackedVector2Array(0, 0, 0, 672, 512, 672, 512, 544, 64, 544, 64, 96, 1088, 96, 1088, 544, 416, 544, 416, 672, 1152, 672, 1152, 0)
+
+[node name="display_down" type="Node2D" parent="."]
+
+[node name="dd_bg" type="Polygon2D" parent="display_down"]
+color = Color(0, 0, 0, 0.262745)
+polygon = PackedVector2Array(0, 704, 0, 544, 1152, 544, 1152, 704)
+
+[node name="line" type="MeshInstance2D" parent="display_down/dd_bg"]
+z_index = 1
+position = Vector2(576, 545)
+scale = Vector2(1152, 2)
+mesh = SubResource("QuadMesh_sldah")
+
+[node name="line2" type="MeshInstance2D" parent="display_down/dd_bg"]
+z_index = 1
+position = Vector2(192, 1120)
+rotation = 1.5708
+scale = Vector2(1152, 2)
+mesh = SubResource("QuadMesh_sldah")
+
+[node name="b_blocks" type="Button" parent="display_down"]
+offset_top = 548.0
+offset_right = 192.0
+offset_bottom = 579.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_sldah")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_b1cmn")
+theme_override_styles/normal = SubResource("StyleBoxFlat_pxqd5")
+text = "blocks"
+
+[node name="b_obstacles" type="Button" parent="display_down"]
+offset_top = 580.0
+offset_right = 192.0
+offset_bottom = 611.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b1cmn")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ba0ut")
+text = "obstacles
+"
+
+[node name="b_special" type="Button" parent="display_down"]
+offset_top = 612.0
+offset_right = 192.0
+offset_bottom = 643.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pxqd5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_q68jb")
+text = "special"
+
+[node name="rows" type="Node2D" parent="display_down"]
+
+[node name="blocks" type="Node2D" parent="display_down/rows"]
+
+[node name="block" type="Button" parent="display_down/rows/blocks"]
+offset_left = 192.0
+offset_top = 548.0
+offset_right = 288.0
+offset_bottom = 644.0
+scale = Vector2(0.75, 0.75)
+pivot_offset = Vector2(48, 48)
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 64
+theme_override_constants/align_to_largest_stylebox = 0
+icon = ExtResource("2_q68jb")
+icon_alignment = 1
+
+[node name="obstacles" type="Node2D" parent="display_down/rows"]
+visible = false
+
+[node name="spike" type="Button" parent="display_down/rows/obstacles"]
+offset_left = 192.0
+offset_top = 548.0
+offset_right = 288.0
+offset_bottom = 644.0
+scale = Vector2(0.75, 0.75)
+pivot_offset = Vector2(48, 48)
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 64
+theme_override_constants/align_to_largest_stylebox = 0
+icon = ExtResource("3_xg7d5")
+icon_alignment = 1
+
+[node name="special" type="Node2D" parent="display_down/rows"]
+visible = false
+
+[node name="fin" type="Button" parent="display_down/rows/special"]
+offset_left = 192.0
+offset_top = 548.0
+offset_right = 288.0
+offset_bottom = 644.0
+scale = Vector2(0.75, 0.75)
+pivot_offset = Vector2(48, 48)
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 64
+theme_override_constants/align_to_largest_stylebox = 0
+icon = ExtResource("2_q68jb")
+icon_alignment = 1
+
+[node name="orb" type="Button" parent="display_down/rows/special"]
+offset_left = 288.0
+offset_top = 548.0
+offset_right = 384.0
+offset_bottom = 644.0
+scale = Vector2(0.75, 0.75)
+pivot_offset = Vector2(48, 48)
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 64
+theme_override_constants/align_to_largest_stylebox = 0
+icon = ExtResource("2_q68jb")
+icon_alignment = 1
+
+[node name="bg" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="bg"]
+material = SubResource("ShaderMaterial_xg7d5")
+offset_left = 64.0
+offset_top = 96.0
+offset_right = 1088.0
+offset_bottom = 544.0
+
+[node name="level" type="Node2D" parent="."]

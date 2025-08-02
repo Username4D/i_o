@@ -1,9 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://ogckpwtfoce7"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_3gtdk"]
+size = Vector2(0.5, 0.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8r6n6"]
-size = Vector2(64, 64)
+size = Vector2(32, 32)
 
 [node name="block" type="StaticBody2D"]
 

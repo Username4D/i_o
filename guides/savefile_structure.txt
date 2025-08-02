@@ -1,0 +1,19 @@
+- level
+	- metadate
+		- Name:
+		- Medaltimes:
+		- foreground:
+	- objects
+		- fixed
+			- finish positon:
+			- spawn position
+		- blocks
+			- block 1
+				- position:
+				- scale: 
+		- gp objects
+			- object 1
+				- position:
+				- scale:
+				- type:
+	
