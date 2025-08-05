@@ -48,10 +48,21 @@ func _process(delta: float) -> void:
 func _on_button_button_down() -> void:
 	if self.get_parent().get_parent().mode == "rotate":
 		$TextureRect.rotation_degrees += 90
+		$TextureRect.rotation_degrees = 0 if $TextureRect.rotation_degrees == 360 else $TextureRect.rotation_degrees
 		rot = $TextureRect.rotation_degrees
+		print($TextureRect.rotation_degrees)
 		if scale_type == "tile":
 			if $TextureRect.rotation_degrees == 90 or $TextureRect.rotation_degrees == 270:
 				$TextureRect.material.set_shader_parameter("scale", Vector2(scale.y, scale.x))
-				print("lol")
+				
 			else:
 				$TextureRect.material.set_shader_parameter("scale", Vector2(scale.x, scale.y))
+		
+func ldinit():
+	$TextureRect.rotation_degrees = rot
+	if scale_type == "tile":
+		if $TextureRect.rotation_degrees == 90 or $TextureRect.rotation_degrees == 270:
+			$TextureRect.material.set_shader_parameter("scale", Vector2(scale.y, scale.x))
+				
+		else:
+			$TextureRect.material.set_shader_parameter("scale", Vector2(scale.x, scale.y))

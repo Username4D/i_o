@@ -14,7 +14,7 @@ func _ready() -> void:
 	$timers/gold.wait_time = lvl.get_meta("gold_time")
 	player = lvl.get_node("players/player")
 	$level.add_child(lvl)
-	read_json(level_json)
+	read_json(level_json, 0)
 	apply_colors(lvl, lvl.get_meta("palette"))
 	ui_handler.fin.connect(fin)
 func _physics_process(delta: float) -> void:
@@ -29,6 +29,7 @@ func _physics_process(delta: float) -> void:
 		$level.add_child(lvl)
 		lvl.name = "level"
 		player = lvl.get_node("players/player")
+		read_json(level_json, 1)
 		started = false
 		running = false
 		$ui.get_node("medal display").visible = true
@@ -85,7 +86,7 @@ func fin():
 	$timers/bronze.paused = true
 	$timers/silver.paused = true
 	$timers/gold.paused = true
-func read_json(stringjs:String):
+func read_json(stringjs:String, id):
 	var data = JSON.parse_string(stringjs)
 	print(data)
 	var objects = data["objects"]
@@ -94,5 +95,6 @@ func read_json(stringjs:String):
 		ins.position = GlobalFunctions.string_to_vector2(i["position"])
 		ins.scale =GlobalFunctions.string_to_vector2(i["scale"])
 		ins.rotation_degrees = i["rotation"]
-		$level.get_node("level").get_node("obj").add_child(ins)
+		$level.get_child(id).get_node("obj").add_child(ins)
+		print($level.get_child(id).name)
 	

@@ -1,30 +1,46 @@
-[gd_scene load_steps=3 format=3 uid="uid://dvxa5l22abk14"]
+[gd_scene load_steps=7 format=3 uid="uid://dvxa5l22abk14"]
 
-[ext_resource type="Texture2D" uid="uid://1e0d5mowt1ev" path="res://images/spike.svg" id="1_7a7y0"]
+[ext_resource type="Texture2D" uid="uid://mpibo3m2055m" path="res://images/spikes.svg" id="1_7a7y0"]
+[ext_resource type="Shader" uid="uid://d18prp1wwbl3e" path="res://scenes/editor_obj.gdshader" id="1_d2mqm"]
 [ext_resource type="Script" uid="uid://uhw3xk3x8tmy" path="res://texture_rect.gd" id="2_d2mqm"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cx2lw"]
+resource_local_to_scene = true
+shader = ExtResource("1_d2mqm")
+shader_parameter/scale = Vector2(1, 1)
+shader_parameter/regionPosition = Vector2(0, 0)
+shader_parameter/regionSize = Vector2(128, 128)
+shader_parameter/tint = Vector4(1, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2mqm"]
+atlas = ExtResource("1_7a7y0")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="QuadMesh" id="QuadMesh_d2mqm"]
+size = Vector2(32, 32)
+
 [node name="spike" type="Area2D"]
+position = Vector2(32, 64)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(-16, -16)
 scale = Vector2(0.25, 0.25)
-polygon = PackedVector2Array(0, 128, 64, 0, 128, 128)
+polygon = PackedVector2Array(-64, 64, 0, -64, 64, 64)
 
 [node name="TextureRect" type="TextureRect" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 112.0
-offset_bottom = 112.0
-grow_horizontal = 2
-grow_vertical = 2
+material = SubResource("ShaderMaterial_cx2lw")
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_7a7y0")
+pivot_offset = Vector2(64, 64)
+texture = SubResource("AtlasTexture_d2mqm")
 stretch_mode = 1
 script = ExtResource("2_d2mqm")
+metadata/_edit_use_anchors_ = true
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+modulate = Color(1, 0.53, 0.53, 0.133333)
+mesh = SubResource("QuadMesh_d2mqm")
 
 [connection signal="body_entered" from="." to="TextureRect" method="_on_spike_body_entered"]

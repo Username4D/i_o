@@ -5,7 +5,7 @@
 
 [node name="level_viewport" type="Node2D"]
 script = ExtResource("1_n86wo")
-level_json = "{\"meta\": {\"medals\": [10,20,30],\"name\": \"My Level\"},\"objects\": [{\"object\": \"block\",\"position\": \"(976.0, 464.0)\",\"rotation\": 0,\"scale\": \"(-7.0, 5.0)\"},{\"object\": \"spike\",\"position\": \"(848.0, 528.0)\",\"rotation\": 0,\"scale\": \"(1.0, 1.0)\"},{\"object\": \"spike\",\"position\": \"(1072.0, 368.0)\",\"rotation\": 0,\"scale\": \"(1.0, 1.0)\"}]}"
+level_json = "{\"meta\": {\"medals\": [0,0,0],\"name\": \"\"},\"objects\": [{\"object\": \"spike\",\"position\": \"(1008.0, 336.0)\",\"rotation\": 270.0,\"scale\": \"(-5.0, -13.0)\"}]}"
 
 [node name="level" type="Node2D" parent="."]
 

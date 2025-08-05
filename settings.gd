@@ -9,22 +9,41 @@ var valid_chars_str = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l
 func check_text(texts: String, obj: Node, sets: Array) -> void:
 	var text = obj.text
 	var newtext = ""
+	var dots = 0
 	if text:
 		for i in range(0, text.length(), 1):
 			var out = ""
 			var c = text[i]
 			for n in sets:
 				if c == n or c == n.capitalize():
-					out = c
+					if c != ".":
+						out = c
+					else:
+						if dots == 0:
+							dots = 1
+							out = c
 			newtext += out
 		obj.text = newtext
-
+	if obj.text == "":
+		obj.text = obj.placeholder_text
 func _ready() -> void:
 	$settings/name.text_submitted.connect(check_text.bind($settings/name, valid_chars_str))
 	$settings/bronze.text_submitted.connect(check_text.bind($settings/bronze, valid_chars_num))
 	$settings/silver.text_submitted.connect(check_text.bind($settings/silver, valid_chars_num))
 	$settings/gold.text_submitted.connect(check_text.bind($settings/gold, valid_chars_num))
-
 func _process(delta: float) -> void:
 	medals = [int($settings/gold.text),int($settings/silver.text),int($settings/bronze.text)]
 	level_name = $settings/name.text
+	
+func init() -> void:
+	$settings/name.text = level_name
+	$settings/bronze.text = var_to_str(medals[2])
+	$settings/silver.text = var_to_str(medals[1])
+	$settings/gold.text = var_to_str(medals[0])
+func error(err: String) -> void:
+	match err:
+		"order":
+			$error.text = "Times must be in Order: Bronze > Silver > Gold"
+		"none":
+			$error.text = ""
+	$error.visible = true

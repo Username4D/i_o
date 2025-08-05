@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctl1it8q2rh11"]
+
+[ext_resource type="Script" uid="uid://d2io77trmbmnx" path="res://pre_editor.gd" id="1_wanby"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l6clv"]
+font_size = 40
+
+[node name="pre_editor" type="Node2D"]
+script = ExtResource("1_wanby")
+
+[node name="levels" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 128.0
+color = Color(0, 0, 0, 0.235294)
+
+[node name="Label" type="Label" parent="."]
+offset_right = 1152.0
+offset_bottom = 128.0
+text = "     Levels:"
+label_settings = SubResource("LabelSettings_l6clv")
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+offset_left = 1040.0
+offset_top = 16.0
+offset_right = 1136.0
+offset_bottom = 112.0
+text = "new"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

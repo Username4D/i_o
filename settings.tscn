@@ -1,9 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://dggcab27822cc"]
+[gd_scene load_steps=12 format=3 uid="uid://dggcab27822cc"]
 
 [ext_resource type="Script" uid="uid://c4cc7dnv7o7l1" path="res://settings.gd" id="1_x2hje"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jwo76"]
+resource_local_to_scene = true
 font_size = 29
+
+[sub_resource type="LabelSettings" id="LabelSettings_x2hje"]
+font_size = 11
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jwo76"]
 content_margin_left = 8.0
@@ -55,6 +59,15 @@ label_settings = SubResource("LabelSettings_jwo76")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="error" type="Label" parent="."]
+offset_left = 224.0
+offset_top = 448.0
+offset_right = 928.0
+offset_bottom = 480.0
+label_settings = SubResource("LabelSettings_x2hje")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="settings" type="Node" parent="."]
 
 [node name="name" type="LineEdit" parent="settings"]
@@ -66,6 +79,7 @@ focus_mode = 1
 theme_override_styles/focus = SubResource("StyleBoxFlat_jwo76")
 theme_override_styles/read_only = SubResource("StyleBoxEmpty_3ykye")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_x2hje")
+text = "My new Level"
 placeholder_text = "My new Level"
 max_length = 28
 context_menu_enabled = false
@@ -83,7 +97,8 @@ focus_mode = 1
 theme_override_styles/focus = SubResource("StyleBoxFlat_jwo76")
 theme_override_styles/read_only = SubResource("StyleBoxEmpty_3ykye")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_x2hje")
-placeholder_text = "0.0"
+text = "30.0"
+placeholder_text = "30.0"
 max_length = 28
 context_menu_enabled = false
 emoji_menu_enabled = false
@@ -100,7 +115,8 @@ focus_mode = 1
 theme_override_styles/focus = SubResource("StyleBoxFlat_jwo76")
 theme_override_styles/read_only = SubResource("StyleBoxEmpty_3ykye")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_x2hje")
-placeholder_text = "0.0"
+text = "20.0"
+placeholder_text = "20.0"
 max_length = 28
 context_menu_enabled = false
 emoji_menu_enabled = false
@@ -117,7 +133,8 @@ focus_mode = 1
 theme_override_styles/focus = SubResource("StyleBoxFlat_jwo76")
 theme_override_styles/read_only = SubResource("StyleBoxEmpty_3ykye")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_x2hje")
-placeholder_text = "0.0"
+text = "10.0"
+placeholder_text = "10.0"
 max_length = 28
 context_menu_enabled = false
 emoji_menu_enabled = false
