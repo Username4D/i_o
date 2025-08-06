@@ -40,6 +40,7 @@ script = ExtResource("2_d2mqm")
 metadata/_edit_use_anchors_ = true
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+visible = false
 modulate = Color(1, 0.53, 0.53, 0.133333)
 mesh = SubResource("QuadMesh_d2mqm")
 
