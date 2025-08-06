@@ -27,6 +27,7 @@ scale = Vector2(0.25, 0.25)
 polygon = PackedVector2Array(-64, 64, 0, -64, 64, 64)
 
 [node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
 material = SubResource("ShaderMaterial_cx2lw")
 offset_left = -64.0
 offset_top = -64.0

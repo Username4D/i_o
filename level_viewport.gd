@@ -6,6 +6,8 @@ var player: Node
 @export var running = false
 @export var level_json = ""
 @onready var objects_sc = {"block": preload("res://scenes/block.tscn"), "spike": preload("res://scenes/spike.tscn"), "orb": preload("res://scenes/orb.tscn"), "fin": preload("res://scenes/fin.tscn")}
+@export var campaign = false
+var menu_switch = false
 func _ready() -> void:
 	var lvl = level.instantiate()
 	lvl.name = "level"
@@ -35,7 +37,8 @@ func _physics_process(delta: float) -> void:
 		$ui.get_node("medal display").visible = true
 		$ui.get_node("medal display").frame = 0
 		apply_colors(lvl, lvl.get_meta("palette"))
-		
+	if Input.is_action_just_pressed("ui_escape"):
+		escape()
 	
 	if player:
 		if player.alive == false:
@@ -97,4 +100,13 @@ func read_json(stringjs:String, id):
 		ins.rotation_degrees = i["rotation"]
 		$level.get_child(id).get_node("obj").add_child(ins)
 		print($level.get_child(id).name)
-	
+func escape():
+	match menu_switch:
+			true:
+				menu_switch = false
+				ui_handler.settings_open.emit()
+				$settings.visible = false
+			false:
+				menu_switch = true
+				ui_handler.settings_closed.emit()
+				$settings.visible = true

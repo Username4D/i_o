@@ -3,7 +3,7 @@ extends Node2D
 var button_scene = preload("res://scenes/campaign_button.tscn")
 
 func _ready() -> void:
-	for i in range(1, 2):
+	for i in range(1, 3):
 		var lvl_json = FileAccess.open("user://data/campaign_levels/" + var_to_str(i)+ ".txt", FileAccess.READ)
 		var lvl = JSON.parse_string(lvl_json.get_as_text())
 		var stats_json = FileAccess.open("user://data/campaign_info/" + var_to_str(i)+ ".txt", FileAccess.READ)
@@ -21,5 +21,6 @@ func play(js) -> void:
 	var scene = load("res://scenes/level_viewport.tscn")
 	var obj = scene.instantiate()
 	obj.level_json = js
+	obj.campaign = true
 	self.get_parent().add_child(obj)
 	self.queue_free()

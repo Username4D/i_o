@@ -44,5 +44,6 @@ func _on_button_pressed() -> void:
 func play(lvl):
 	var level = load("res://scenes/level_viewport.tscn").instantiate()
 	level.level_json = load_from_file(lvl)
+	level.campaign = false
 	self.get_parent().add_child(level)
 	self.queue_free()

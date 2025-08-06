@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtdfxdn175v0n"]
+[gd_scene load_steps=4 format=3 uid="uid://dtdfxdn175v0n"]
 
 [ext_resource type="Script" uid="uid://mtdaqv0knq3o" path="res://level_viewport.gd" id="1_n86wo"]
 [ext_resource type="PackedScene" uid="uid://dbkck550073d1" path="res://scenes/ui.tscn" id="2_fkm5r"]
+[ext_resource type="PackedScene" uid="uid://bn5dbeipfhq7s" path="res://ingame_pause.tscn" id="3_ktmyr"]
 
 [node name="level_viewport" type="Node2D"]
 script = ExtResource("1_n86wo")
@@ -21,6 +22,9 @@ one_shot = true
 one_shot = true
 
 [node name="ui" parent="." instance=ExtResource("2_fkm5r")]
+
+[node name="settings" parent="." instance=ExtResource("3_ktmyr")]
+visible = false
 
 [connection signal="timeout" from="timers/bronze" to="." method="_on_bronze_timeout"]
 [connection signal="timeout" from="timers/silver" to="." method="_on_silver_timeout"]

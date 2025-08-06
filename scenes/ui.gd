@@ -25,7 +25,6 @@ func _process(delta: float) -> void:
 		tracking = 0
 	else:
 		$"medal display".frame = tracking
-
 func particle(i):
 	$GPUParticles2D.restart()
 	$right.restart()
@@ -78,41 +77,37 @@ func particle(i):
 	$right.emitting = true
 	
 	$GPUParticles2D.emitting = true
-
 func _ready() -> void:
-	ui_handler.fin.connect(transition_end)
-	ui_handler.start.connect(transition_start)
-func transition_end():
+	ui_handler.fin.connect(transition_end.bind(false))
+	ui_handler.start.connect(transition_start.bind(false))
+	ui_handler.settings_open.connect(transition_start.bind(true))
+	ui_handler.settings_closed.connect(transition_end.bind(true))
+func transition_end(sf: bool):
 	if self.get_parent().get_node("level").get_child(0):
 		
 		print("lol")
-		for i in range(20, 100, 2):
-			self.get_parent().get_node("level").get_child(0).get_node("ColorRect").material.set_shader_parameter("blur_strength", i / 20)
-			
-			$Label.position.y =easeInOutQuad(float(i - 22) / 80) * 224
-			$"medal display".position.y = 592 - easeInOutQuad(float(i - 22) / 80) * 224
-			
+		for i in range(10, 50, 2):
+			self.get_parent().get_node("level").get_child(0).get_node("ColorRect").material.set_shader_parameter("blur_strength", i / 10)
+			if not sf:
+				$Label.position.y =easeInOutQuad(float(i - 11) / 40) * 224
+				$"medal display".position.y = 592 - easeInOutQuad(float(i - 11) / 40) * 224
+			else:
+				$ColorRect.material.set_shader_parameter("blur_strength", i / 10)
 			
 			await get_tree().process_frame
-			await get_tree().process_frame
-			await get_tree().process_frame
-	
-func transition_start():
+
+func transition_start(sf: bool):
 	if self.get_parent().get_node("level").get_child(0):
 		
 		print("lol")
-		for i in range(20, 100, 2):
-			self.get_parent().get_node("level").get_child(0).get_node("ColorRect").material.set_shader_parameter("blur_strength", 4.01 - i / 20)
-			
-			$Label.position.y = 224 - easeInOutQuad(float(i - 22) / 80) * 224
-			$"medal display".position.y = 368 + easeInOutQuad(float(i - 22) / 80) * 224
-			
+		for i in range(10, 50, 2):
+			self.get_parent().get_node("level").get_child(0).get_node("ColorRect").material.set_shader_parameter("blur_strength", 4.01 - i / 10)
+			if not sf:
+				$Label.position.y = 224 - easeInOutQuad(float(i - 11) / 40) * 224
+				$"medal display".position.y = 368 + easeInOutQuad(float(i - 11) / 40) * 224
+			else:
+				$ColorRect.material.set_shader_parameter("blur_strength", 4.01 - i / 10)
 			
 			await get_tree().process_frame
-
-
-	
-
-		
 func easeInOutQuad(x) -> float:
 	return 2 * x * x if x < 0.5 else 1 - pow(-2 * x + 2, 2) / 2

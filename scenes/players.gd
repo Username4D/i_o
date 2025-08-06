@@ -7,7 +7,7 @@ var accel = 4
 var friction = 30
 var max_speed = 270
 
-var jump_strength = -200
+var jump_strength = -240
 var gravity = 6
 
 # conplayer tracking
