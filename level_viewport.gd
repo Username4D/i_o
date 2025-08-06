@@ -8,16 +8,22 @@ var player: Node
 @onready var objects_sc = {"block": preload("res://scenes/block.tscn"), "spike": preload("res://scenes/spike.tscn"), "orb": preload("res://scenes/orb.tscn"), "fin": preload("res://scenes/fin.tscn")}
 @export var campaign = false
 var menu_switch = false
+@export var id = 1
+var meta
 func _ready() -> void:
 	var lvl = level.instantiate()
 	lvl.name = "level"
-	$timers/bronze.wait_time = lvl.get_meta("bronze_time")
-	$timers/silver.wait_time = lvl.get_meta("silver_time")
-	$timers/gold.wait_time = lvl.get_meta("gold_time")
+	
 	player = lvl.get_node("players/player")
 	$level.add_child(lvl)
 	read_json(level_json, 0)
 	apply_colors(lvl, lvl.get_meta("palette"))
+	lvl.set_meta("bronze_time", meta["medals"][2])
+	lvl.set_meta("silver_time", meta["medals"][1])
+	lvl.set_meta("gold_time", meta["medals"][0])
+	$timers/bronze.wait_time = lvl.get_meta("bronze_time")
+	$timers/silver.wait_time = lvl.get_meta("silver_time")
+	$timers/gold.wait_time = lvl.get_meta("gold_time")
 	ui_handler.fin.connect(fin)
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_restart"):
@@ -89,10 +95,25 @@ func fin():
 	$timers/bronze.paused = true
 	$timers/silver.paused = true
 	$timers/gold.paused = true
+	if campaign:
+		var lvl_file = FileAccess.open("user://data/campaign_info/"+var_to_str(id)+ ".txt", FileAccess.READ_WRITE)
+		var old = JSON.parse_string(lvl_file.get_as_text())
+		old["pb"] = float(meta["medals"][2]) - $timers/bronze.time_left if float(meta["medals"][2]) - $timers/bronze.time_left < old["pb"] else old["pb"]
+		if $timers/gold.time_left > 0:
+			old["medal"] = 3
+		elif $timers/silver.time_left > 0:
+			old["medal"] = 2
+		elif $timers/bronze.time_left > 0:
+			old["medal"] = 1
+		else:
+			old["medal"] = 0
+		lvl_file.store_string(JSON.stringify(old))
+		print(JSON.stringify(old))
 func read_json(stringjs:String, id):
 	var data = JSON.parse_string(stringjs)
 	print(data)
 	var objects = data["objects"]
+	meta = data["meta"]
 	for i in objects:
 		var ins = objects_sc[i["object"]].instantiate()
 		ins.position = GlobalFunctions.string_to_vector2(i["position"])
