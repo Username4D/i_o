@@ -1,6 +1,10 @@
 extends Node2D
 
 var button_scene = preload("res://scenes/campaign_button.tscn")
+var first: Node
+var last: Node
+@export var cleft = true
+@export var cright = true
 
 func _ready() -> void:
 	for i in range(1, 3):
@@ -17,6 +21,10 @@ func _ready() -> void:
 		button.json = lvl_json.get_as_text()
 		$buttons.add_child(button)
 		button.init()
+		if i == 1:
+			first = button
+		last = button
+	update()
 func play(js) -> void:
 	var scene = load("res://scenes/level_viewport.tscn")
 	var obj = scene.instantiate()
@@ -24,3 +32,15 @@ func play(js) -> void:
 	obj.campaign = true
 	self.get_parent().add_child(obj)
 	self.queue_free()
+func update():
+	if first.position.x > 550:
+		cleft = false
+	else:
+		cleft = true
+	if last.position.x < 600:
+		cright = false
+	else:
+		cright = true
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right"):
+		update()

@@ -11,7 +11,22 @@ func init() -> void:
 	else:
 		$Sprite2D.texture.region = Rect2((medal - 1) * 96, 0, 96, 96)
 	$time.text = pb
-	$name.text = lname
-	
+	$name.text = lname	
 func _on_button_pressed() -> void:
 	get_parent().get_parent().play(json)
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_left") and self.get_parent().get_parent().cleft:
+		move(-1)
+	if Input.is_action_just_pressed("ui_right") and self.get_parent().get_parent().cright:
+		move(1)
+func move(direction: int):
+	await get_tree().process_frame
+	var new_offset = 0
+	var old_offset = 0
+	for i in range(0.0, 41.0):
+		new_offset = GlobalFunctions.easeInOutQuad(i / 40.0) * 576 * direction
+		self.position.x -= new_offset - old_offset
+		print((i / 40.0))
+		old_offset = new_offset
+		await get_tree().process_frame
+		
