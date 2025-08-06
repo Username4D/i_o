@@ -3,14 +3,21 @@ extends Node2D
 var positions = Vector2(0, 160)
 var bt = preload("res://level_button.tscn")
 
+
+
 func _ready() -> void:
 	var json = JSON.parse_string(load_lfrom_file("levels.txt"))
+	var first = true
 	for i in json:
+		
 		var but = bt.instantiate()
 		but.lname = i
 		but.position = positions
 		positions += Vector2(0, 64)
-		$levels.add_child(but)
+		$levels/VBoxContainer.add_child(but)
+		if first:
+			but.grab()
+		first = false
 func load_editor(lvl):
 	var editor = load("res://scenes/editor.tscn").instantiate()
 	editor.load = true

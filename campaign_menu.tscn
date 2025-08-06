@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://w56t21x4o6av"]
+
+[ext_resource type="Script" uid="uid://1vye8dso2gu7" path="res://campaign_menu.gd" id="1_pxsld"]
+
+[node name="campaign" type="Node2D"]
+script = ExtResource("1_pxsld")
+
+[node name="buttons" type="Node2D" parent="."]

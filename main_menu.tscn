@@ -1,0 +1,117 @@
+[gd_scene load_steps=8 format=3 uid="uid://i8x3xpyavjyu"]
+
+[ext_resource type="Script" uid="uid://dquyodh7xrvqd" path="res://main_menu.gd" id="1_06t4h"]
+
+[sub_resource type="FontFile" id="FontFile_7vrkn"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/17/0/ascent = 0.0
+cache/0/17/0/descent = 0.0
+cache/0/17/0/underline_position = 0.0
+cache/0/17/0/underline_thickness = 0.0
+cache/0/17/0/scale = 1.0
+cache/0/64/0/ascent = 0.0
+cache/0/64/0/descent = 0.0
+cache/0/64/0/underline_position = 0.0
+cache/0/64/0/underline_thickness = 0.0
+cache/0/64/0/scale = 1.0
+cache/0/256/0/ascent = 0.0
+cache/0/256/0/descent = 0.0
+cache/0/256/0/underline_position = 0.0
+cache/0/256/0/underline_thickness = 0.0
+cache/0/256/0/scale = 1.0
+cache/0/512/0/ascent = 0.0
+cache/0/512/0/descent = 0.0
+cache/0/512/0/underline_position = 0.0
+cache/0/512/0/underline_thickness = 0.0
+cache/0/512/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_fu7sn"]
+line_spacing = 17.255
+paragraph_spacing = 10.65
+font = SubResource("FontFile_7vrkn")
+font_size = 512
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_06t4h"]
+bg_color = Color(0, 0, 0, 0.352941)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vrkn"]
+bg_color = Color(0, 0, 0, 0.188235)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fu7sn"]
+bg_color = Color(0, 0, 0, 0.635294)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jix8l"]
+bg_color = Color(0, 0, 0, 0.172549)
+
+[node name="main_menu" type="Node2D"]
+script = ExtResource("1_06t4h")
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(0, 0, 0, 0.105882)
+z_index = -1
+offset_left = 32.0
+offset_top = -64.0
+offset_right = 1184.0
+offset_bottom = 618.0
+text = "i /o"
+label_settings = SubResource("LabelSettings_fu7sn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="buttons" type="Node2D" parent="."]
+
+[node name="play" type="Button" parent="buttons"]
+offset_left = 512.0
+offset_top = 256.0
+offset_right = 640.0
+offset_bottom = 384.0
+rotation = 0.785398
+pivot_offset = Vector2(64, 64)
+theme_override_styles/focus = SubResource("StyleBoxFlat_06t4h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7vrkn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fu7sn")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jix8l")
+text = "play
+"
+
+[node name="settings" type="Button" parent="buttons"]
+offset_left = 288.0
+offset_top = 256.0
+offset_right = 416.0
+offset_bottom = 384.0
+rotation = 0.785398
+scale = Vector2(0.8, 0.8)
+pivot_offset = Vector2(64, 64)
+theme_override_styles/focus = SubResource("StyleBoxFlat_06t4h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7vrkn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fu7sn")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jix8l")
+text = "settings
+"
+
+[node name="editor" type="Button" parent="buttons"]
+offset_left = 736.0
+offset_top = 256.0
+offset_right = 864.0
+offset_bottom = 384.0
+rotation = 0.785398
+scale = Vector2(0.8, 0.8)
+pivot_offset = Vector2(64, 64)
+theme_override_styles/focus = SubResource("StyleBoxFlat_06t4h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7vrkn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fu7sn")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jix8l")
+text = "editor
+"
+
+[node name="Label2" type="Label" parent="."]
+offset_top = 448.0
+offset_right = 1152.0
+offset_bottom = 544.0
+text = "By Username3D"
+horizontal_alignment = 1
+vertical_alignment = 1

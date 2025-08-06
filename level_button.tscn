@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bftfut6ww2lac"]
+[gd_scene load_steps=11 format=3 uid="uid://bftfut6ww2lac"]
 
 [ext_resource type="Script" uid="uid://byoke8y7t1sgo" path="res://level_button.gd" id="1_k6cd2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j8bpn"]
-bg_color = Color(0, 0, 0, 0.196078)
+bg_color = Color(0, 0, 0, 0.270588)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j8bpn"]
 
@@ -17,62 +17,76 @@ bg_color = Color(0, 0, 0, 0.27451)
 [sub_resource type="LabelSettings" id="LabelSettings_dvbve"]
 font_color = Color(0.58, 0.58, 0.58, 1)
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k6cd2"]
+bg_color = Color(0, 0, 0, 0.262745)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_shs6u"]
+bg_color = Color(0, 0, 0, 0.392157)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_txyvr"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="bg" type="ColorRect"]
+offset_right = 896.0
+offset_bottom = 64.0
+color = Color(0, 0, 0, 0.207843)
 script = ExtResource("1_k6cd2")
 
-[node name="bg" type="ColorRect" parent="."]
-offset_left = 128.0
-offset_top = 4.0
-offset_right = 1024.0
-offset_bottom = 60.0
-color = Color(0.24, 0.24, 0.24, 1)
-
 [node name="Button" type="Button" parent="."]
-offset_left = 128.0
-offset_top = 4.0
-offset_right = 1024.0
-offset_bottom = 60.0
+layout_mode = 0
+offset_right = 768.0
+offset_bottom = 64.0
 theme_override_styles/focus = SubResource("StyleBoxFlat_j8bpn")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_j8bpn")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_shs6u")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_dvbve")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_txyvr")
 
-[node name="play" type="Button" parent="Button"]
-visible = false
-layout_mode = 0
-offset_left = -60.0
-offset_right = -4.0
-offset_bottom = 56.0
-text = "play"
-
-[node name="delete" type="Button" parent="Button"]
-visible = false
-layout_mode = 0
-offset_left = 900.0
-offset_right = 956.0
-offset_bottom = 56.0
-text = "delete"
-autowrap_mode = 1
-clip_text = true
-
 [node name="name" type="Label" parent="."]
-offset_left = 160.0
-offset_right = 1136.0
+z_index = 2
+z_as_relative = false
+layout_mode = 0
+offset_left = 32.0
+offset_right = 1008.0
 offset_bottom = 64.0
 text = "My new Level"
 vertical_alignment = 1
 
 [node name="date" type="Label" parent="."]
-offset_left = 160.0
-offset_right = 992.0
+z_index = 2
+z_as_relative = false
+layout_mode = 0
+offset_right = 736.0
 offset_bottom = 64.0
 text = "last edited: 4.4.2009"
 label_settings = SubResource("LabelSettings_dvbve")
 horizontal_alignment = 2
 vertical_alignment = 1
 
+[node name="play" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 768.0
+offset_right = 832.0
+offset_bottom = 64.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_k6cd2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_shs6u")
+theme_override_styles/normal = SubResource("StyleBoxFlat_txyvr")
+text = "play"
+
+[node name="delete" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 832.0
+offset_right = 896.0
+offset_bottom = 64.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_k6cd2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_shs6u")
+theme_override_styles/normal = SubResource("StyleBoxFlat_txyvr")
+text = "delete
+"
+
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="focus_entered" from="Button" to="." method="_on_button_focus_entered"]
 [connection signal="focus_exited" from="Button" to="." method="_on_button_focus_exited"]
-[connection signal="button_down" from="Button/play" to="." method="_on_play_button_down"]
-[connection signal="pressed" from="Button/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="play" to="." method="_on_play_pressed"]
