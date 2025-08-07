@@ -47,3 +47,9 @@ func play(lvl):
 	level.campaign = false
 	self.get_parent().add_child(level)
 	self.queue_free()
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_escape"):
+		var new = load("res://main_menu.tscn").instantiate()
+		self.get_parent().add_child(new)
+		self.queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://hwriqj5jbxr6"]
+[gd_scene load_steps=19 format=3 uid="uid://hwriqj5jbxr6"]
 
 [ext_resource type="Script" uid="uid://brcso5n75ip8s" path="res://scenes/editor.gd" id="1_ba0ut"]
 [ext_resource type="Texture2D" uid="uid://cm3wgmpvhntej" path="res://images/fin.svg" id="2_q68jb"]
@@ -6,6 +6,7 @@
 [ext_resource type="Shader" uid="uid://doof63a004w0v" path="res://resc/grid.gdshader" id="4_q68jb"]
 [ext_resource type="PackedScene" uid="uid://dggcab27822cc" path="res://settings.tscn" id="5_eqbpn"]
 [ext_resource type="Shader" uid="uid://diw2qvsudnia7" path="res://resc/blur.gdshader" id="6_5lcyj"]
+[ext_resource type="PackedScene" uid="uid://572kfoq712k8" path="res://confirm.tscn" id="7_5lcyj"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_sldah"]
 
@@ -244,6 +245,11 @@ z_index = 4
 material = SubResource("ShaderMaterial_5tm2q")
 offset_right = 1152.0
 offset_bottom = 672.0
+
+[node name="settings2" parent="." instance=ExtResource("7_5lcyj")]
+layer = 2
+offset = Vector2(0, 648)
+transform = Transform2D(1, 0, 0, 1, 0, 648)
 
 [connection signal="pressed" from="buttons up/setting" to="." method="_on_setting_pressed"]
 [connection signal="pressed" from="buttons up/save" to="." method="save"]

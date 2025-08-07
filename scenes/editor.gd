@@ -63,24 +63,27 @@ func _on_setting_pressed() -> void:
 		settings_open = false if settings_open else true
 	else:
 		$settings.error("order")
-func save():
+func save() -> int:
 	var objects = []
 	for i in $level.get_children():
 		objects.append({"position": i.position, "scale": i.scale, "object": i.obj, "rotation": i.rot})
 	var meta = {"name": $settings.level_name, "medals": $settings.medals, "last_edit": Time.get_date_dict_from_system(), "palette": $settings.palette}	
 	var level = {"objects": objects, "meta": meta}
 	var dic = JSON.parse_string(load_from_file("levels.txt"))
-	print(dic)
 	levels_array = dic
-	
+	if levels_array.find($settings.level_name) != -1 and not load:
+		print("f")
+		if await confirm() == 0:
+			return 0
+	load =true
 	var json = JSON.stringify(level, "\t")
+	await get_tree().process_frame
 	save_to_file(json, $settings.level_name + ".txt")
-	print(levels_array)
 	levels_array.erase($settings.level_name)
-	print(levels_array)
 	levels_array.insert(0, $settings.level_name)
-	print(levels_array)
 	save_to_file(JSON.stringify(levels_array), "data/levels.txt")
+	print("saved")
+	return 0
 func loadl():
 	var data = JSON.parse_string(json)
 	var objects = data["objects"]
@@ -107,3 +110,25 @@ func load_from_file(fname):
 	var file = FileAccess.open("user://data/" + fname, FileAccess.READ)
 	var content = file.get_as_text()
 	return content
+func confirm():
+	for i in range(0.0, 20.0,1.0):
+		$settings2.offset.y = 648 * GlobalFunctions.easeInOutQuad(1 -(i / 20.0))
+		$ColorRect.material.set_shader_parameter("blur_strength", i /10 + 0.1)
+		await get_tree().process_frame
+		await get_tree().process_frame
+	await $settings2.lol
+	print("yoooooo")
+	await get_tree().process_frame
+	close_confirm()
+	if $settings2.out == "save":
+		pass
+		print("xd")
+		return 1
+	else:
+		return 0
+func close_confirm():
+	for i in range(0.0, 20.0,1.0):
+			$settings2.offset.y =648 * GlobalFunctions.easeInOutQuad( i / 20.0)
+			$ColorRect.material.set_shader_parameter("blur_strength",1 - i / 10 + 0.1)
+			await get_tree().process_frame
+			await get_tree().process_frame

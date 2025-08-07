@@ -47,3 +47,7 @@ func update():
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right"):
 		update()
+	if Input.is_action_just_pressed("ui_escape"):
+		var new = load("res://main_menu.tscn").instantiate()
+		self.get_parent().add_child(new)
+		self.queue_free()
