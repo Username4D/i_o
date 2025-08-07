@@ -10,7 +10,6 @@ func name_to_sprite_id(name):
 			return 2
 		"fin":
 			return 3
-
 func snap_position(position:Vector2, check_bounds: bool, fallback: Vector2, scale: Vector2) -> Vector2:
 	if check_bounds:
 		var returns = Vector2(round((position.x - 16) / 32) * 32 + 16, round((position.y - 16) / 32) * 32 + 16)
@@ -28,10 +27,8 @@ func snap_position(position:Vector2, check_bounds: bool, fallback: Vector2, scal
 		return returns
 	else:
 		return Vector2(round((position.x - 16) / 32) * 32 + 16, round((position.y - 16) / 32) * 32 + 16)
-	
 func snap_scale(scale: Vector2) -> Vector2:
 	return Vector2(round(scale.x / 32) * 2 + 1, round((scale.y) / 32) * 2 + 1)
-	
 func check_scale(position:Vector2, scale: Vector2) -> bool:
 
 	var returns = true
@@ -47,10 +44,8 @@ func check_scale(position:Vector2, scale: Vector2) -> bool:
 		else:
 			returns = false
 	return returns
-
 func easeInOutQuad(x) -> float:
 	return 2 * x * x if x < 0.5 else 1 - pow(-2 * x + 2, 2) / 2
-
 func string_to_vector2(string := "") -> Vector2:
 	if string:
 		var new_string: String = string
@@ -61,3 +56,9 @@ func string_to_vector2(string := "") -> Vector2:
 		return Vector2(int(array[0]), int(array[1]))
 
 	return Vector2.ZERO
+func parse_str_to_color(c: String):
+	c = c.erase(0,1)
+	c = c.erase(len(c) - 1, 1)
+	var a = c.split(",")
+	print([float(a[0]), float(a[1]), float(a[2]), float(a[3])])
+	return [float(a[0]), float(a[1]), float(a[2]), float(a[3])]

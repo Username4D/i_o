@@ -41,6 +41,13 @@ func init() -> void:
 	$settings/bronze.text = var_to_str(medals[2])
 	$settings/silver.text = var_to_str(medals[1])
 	$settings/gold.text = var_to_str(medals[0])
+	print(palette)
+	var c1 = palette[0]
+	var c2 = palette[1]
+	var c3 = palette[2]
+	self.get_node("colors").get_node("1").init(Color.from_hsv(c1[0], c1[1], c1[2]))
+	self.get_node("colors").get_node("2").init(Color.from_hsv(c2[0], c2[1], c2[2]))
+	self.get_node("colors").get_node("3").init(Color.from_hsv(c3[0], c3[1], c3[2]))
 func error(err: String) -> void:
 	match err:
 		"order":

@@ -67,7 +67,7 @@ func save():
 	var objects = []
 	for i in $level.get_children():
 		objects.append({"position": i.position, "scale": i.scale, "object": i.obj, "rotation": i.rot})
-	var meta = {"name": $settings.level_name, "medals": $settings.medals, "last_edit": Time.get_date_dict_from_system()}
+	var meta = {"name": $settings.level_name, "medals": $settings.medals, "last_edit": Time.get_date_dict_from_system(), "palette": $settings.palette}	
 	var level = {"objects": objects, "meta": meta}
 	var dic = JSON.parse_string(load_from_file("levels.txt"))
 	print(dic)
@@ -96,6 +96,7 @@ func loadl():
 	var meta = data["meta"]
 	$settings.medals = meta["medals"]
 	$settings.level_name = meta["name"]
+	$settings.palette = meta["palette"]
 	$settings.init()
 	
 	
