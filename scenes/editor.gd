@@ -69,17 +69,20 @@ func save():
 		objects.append({"position": i.position, "scale": i.scale, "object": i.obj, "rotation": i.rot})
 	var meta = {"name": $settings.level_name, "medals": $settings.medals, "last_edit": Time.get_date_dict_from_system()}
 	var level = {"objects": objects, "meta": meta}
-	
+	var dic = JSON.parse_string(load_from_file("levels.txt"))
+	print(dic)
+	levels_array = dic
 	
 	var json = JSON.stringify(level, "\t")
-	print(json)
 	save_to_file(json, $settings.level_name + ".txt")
+	print(levels_array)
 	levels_array.erase($settings.level_name)
+	print(levels_array)
 	levels_array.insert(0, $settings.level_name)
+	print(levels_array)
 	save_to_file(JSON.stringify(levels_array), "data/levels.txt")
 func loadl():
 	var data = JSON.parse_string(json)
-	print(data)
 	var objects = data["objects"]
 	for i in objects:
 		var ins = editor_obj.instantiate()
@@ -94,8 +97,7 @@ func loadl():
 	$settings.medals = meta["medals"]
 	$settings.level_name = meta["name"]
 	$settings.init()
-	var dic = JSON.parse_string(load_from_file("levels.txt"))
-	levels_array = dic
+	
 	
 func save_to_file(content, fname):
 	var file = FileAccess.open("user://" + fname, FileAccess.WRITE)
