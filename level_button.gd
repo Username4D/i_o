@@ -5,6 +5,11 @@ var clicked = false
 
 func _ready() -> void:
 	$name.text = lname
+	var last = JSON.parse_string(load_lfrom_file(lname))["meta"]["last_edit"]
+	var text = Time.get_datetime_string_from_datetime_dict(last, false)
+	text = text.split("T")[0]
+	$date.text = "last edited: " + text
+	print(last)
 func _on_button_button_down() -> void:
 	if clicked:
 		self.get_parent().get_parent().get_parent().load_editor(lname)
@@ -30,3 +35,7 @@ func _on_button_focus_entered() -> void:
 		self.get_parent().get_parent().scroll_vertical += 80
 func _on_play_pressed() -> void:
 	self.get_parent().get_parent().get_parent().play(lname)
+func load_lfrom_file(fname):
+	var file = FileAccess.open("user://" + fname + ".txt", FileAccess.READ)
+	var content = file.get_as_text()
+	return content
