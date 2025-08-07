@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://dggcab27822cc"]
+[gd_scene load_steps=13 format=3 uid="uid://dggcab27822cc"]
 
 [ext_resource type="Script" uid="uid://c4cc7dnv7o7l1" path="res://settings.gd" id="1_x2hje"]
+[ext_resource type="PackedScene" uid="uid://dnvbp4xjfq7pf" path="res://scenes/color selector.tscn" id="2_nkug2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jwo76"]
 resource_local_to_scene = true
@@ -36,17 +37,17 @@ bg_color = Color(0.537011, 0.537011, 0.537011, 1)
 script = ExtResource("1_x2hje")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = 224.0
+offset_left = 160.0
 offset_top = 96.0
-offset_right = 928.0
+offset_right = 992.0
 offset_bottom = 544.0
 color = Color(0.427493, 0.427493, 0.427493, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 z_index = -1
-offset_left = 220.0
+offset_left = 156.0
 offset_top = 92.0
-offset_right = 932.0
+offset_right = 996.0
 offset_bottom = 548.0
 
 [node name="title" type="Label" parent="."]
@@ -71,7 +72,7 @@ vertical_alignment = 1
 [node name="settings" type="Node" parent="."]
 
 [node name="name" type="LineEdit" parent="settings"]
-offset_left = 448.0
+offset_left = 384.0
 offset_top = 160.0
 offset_right = 896.0
 offset_bottom = 192.0
@@ -89,7 +90,7 @@ selecting_enabled = false
 drag_and_drop_selection_enabled = false
 
 [node name="bronze" type="LineEdit" parent="settings"]
-offset_left = 448.0
+offset_left = 384.0
 offset_top = 224.0
 offset_right = 896.0
 offset_bottom = 256.0
@@ -107,7 +108,7 @@ selecting_enabled = false
 drag_and_drop_selection_enabled = false
 
 [node name="silver" type="LineEdit" parent="settings"]
-offset_left = 448.0
+offset_left = 384.0
 offset_top = 256.0
 offset_right = 896.0
 offset_bottom = 288.0
@@ -125,7 +126,7 @@ selecting_enabled = false
 drag_and_drop_selection_enabled = false
 
 [node name="gold" type="LineEdit" parent="settings"]
-offset_left = 448.0
+offset_left = 384.0
 offset_top = 288.0
 offset_right = 896.0
 offset_bottom = 320.0
@@ -145,38 +146,65 @@ drag_and_drop_selection_enabled = false
 [node name="labels" type="Node" parent="."]
 
 [node name="name" type="Label" parent="labels"]
-offset_left = 256.0
+offset_left = 224.0
 offset_top = 160.0
-offset_right = 896.0
+offset_right = 864.0
 offset_bottom = 192.0
 text = "Name: "
 label_settings = SubResource("LabelSettings_gc0em")
 vertical_alignment = 1
 
 [node name="bronze" type="Label" parent="labels"]
-offset_left = 256.0
+offset_left = 224.0
 offset_top = 224.0
-offset_right = 896.0
+offset_right = 864.0
 offset_bottom = 256.0
 text = "Bronze time: "
 label_settings = SubResource("LabelSettings_gc0em")
 vertical_alignment = 1
 
 [node name="silver" type="Label" parent="labels"]
-offset_left = 256.0
+offset_left = 224.0
 offset_top = 256.0
-offset_right = 896.0
+offset_right = 864.0
 offset_bottom = 288.0
 text = "Silver time: "
 label_settings = SubResource("LabelSettings_gc0em")
 vertical_alignment = 1
 
 [node name="gold" type="Label" parent="labels"]
-offset_left = 256.0
+offset_left = 224.0
 offset_top = 288.0
-offset_right = 896.0
+offset_right = 864.0
 offset_bottom = 320.0
 text = "Gold time: "
+label_settings = SubResource("LabelSettings_gc0em")
+vertical_alignment = 1
+
+[node name="Color 1" type="Label" parent="labels"]
+offset_left = 224.0
+offset_top = 352.0
+offset_right = 864.0
+offset_bottom = 384.0
+text = "Color 1: "
+label_settings = SubResource("LabelSettings_gc0em")
+vertical_alignment = 1
+
+[node name="Color 2" type="Label" parent="labels"]
+offset_left = 224.0
+offset_top = 384.0
+offset_right = 864.0
+offset_bottom = 416.0
+text = "Color 2: "
+label_settings = SubResource("LabelSettings_gc0em")
+vertical_alignment = 1
+
+[node name="Color 3" type="Label" parent="labels"]
+offset_left = 224.0
+offset_top = 416.0
+offset_right = 864.0
+offset_bottom = 448.0
+text = "Color 3: "
 label_settings = SubResource("LabelSettings_gc0em")
 vertical_alignment = 1
 
@@ -190,3 +218,17 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_gc0em")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_cj1lu")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_71mqq")
 text = "close"
+
+[node name="colors" type="Node" parent="."]
+
+[node name="1" parent="colors" instance=ExtResource("2_nkug2")]
+z_index = 1
+position = Vector2(640, 368)
+
+[node name="2" parent="colors" instance=ExtResource("2_nkug2")]
+z_index = 1
+position = Vector2(640, 400)
+
+[node name="3" parent="colors" instance=ExtResource("2_nkug2")]
+z_index = 1
+position = Vector2(640, 432)

@@ -5,6 +5,7 @@ var valid_chars_str = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l
 
 @export var medals = [0.0, 0.0, 0.0]
 @export var level_name = ""
+@export var palette = [Color.from_hsv(1,1,1), Color.from_hsv(1,1,1), Color.from_hsv(1,1,1)]
 
 func check_text(texts: String, obj: Node, sets: Array) -> void:
 	var text = obj.text
@@ -34,7 +35,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	medals = [int($settings/gold.text),int($settings/silver.text),int($settings/bronze.text)]
 	level_name = $settings/name.text
-	
+	palette = [$"colors/1".color, $"colors/2".color, $"colors/3".color]
 func init() -> void:
 	$settings/name.text = level_name
 	$settings/bronze.text = var_to_str(medals[2])
