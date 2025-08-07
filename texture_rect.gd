@@ -8,6 +8,7 @@ var sizes = Vector2.ONE
 func _ready() -> void:
 	
 	await get_tree().process_frame
+	self.material.set_shader_parameter("tint", Vector4(self.get_parent().modulate.r, self.get_parent().modulate.g,self.get_parent().modulate.b, self.get_parent().modulate.a))
 	rot = get_parent().rotation_degrees
 	get_parent().rotation_degrees = 0
 	print(rot)

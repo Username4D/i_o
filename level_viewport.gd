@@ -17,6 +17,7 @@ func _ready() -> void:
 	player = lvl.get_node("players/player")
 	$level.add_child(lvl)
 	read_json(level_json, 0)
+	lvl.set_meta("palette", meta["palette"]) 
 	apply_colors(lvl, lvl.get_meta("palette"))
 	lvl.set_meta("bronze_time", meta["medals"][2])
 	lvl.set_meta("silver_time", meta["medals"][1])
@@ -38,6 +39,7 @@ func _physics_process(delta: float) -> void:
 		lvl.name = "level"
 		player = lvl.get_node("players/player")
 		read_json(level_json, 1)
+		lvl.set_meta("palette", meta["palette"]) 
 		started = false
 		running = false
 		$ui.get_node("medal display").visible = true
@@ -87,10 +89,10 @@ func round_to_dec(num, digit):
 	return round(num * pow(10.0, digit)) / pow(10.0, digit)
 func apply_colors(obj, colors) -> void:
 	obj.get_node("bg").scale *= 100
-	obj.get_node("bg").modulate = colors[1]
-	obj.get_node("blocks").modulate = colors[2]
-	obj.get_node("players").modulate = colors[0]
-	obj.get_node("foreground").modulate = colors[3]
+	obj.get_node("bg").modulate = Color.from_hsv(colors[1][0],colors[1][1],colors[1][2])
+	obj.get_node("players").modulate = Color.from_hsv(colors[0][0],colors[0][1],colors[0][2])
+	obj.get_node("blocks").modulate = Color.from_hsv(colors[2][0],colors[2][1],colors[2][2])
+
 func fin():
 	$timers/bronze.paused = true
 	$timers/silver.paused = true
@@ -108,19 +110,23 @@ func fin():
 		else:
 			old["medal"] = 0
 		lvl_file.store_string(JSON.stringify(old))
-		print(JSON.stringify(old))
 func read_json(stringjs:String, id):
 	var data = JSON.parse_string(stringjs)
-	print(data)
 	var objects = data["objects"]
 	meta = data["meta"]
+	var pal = meta["palette"]
+	print(pal)
 	for i in objects:
 		var ins = objects_sc[i["object"]].instantiate()
+		match i["object"]:
+			"block", "spike":
+				ins.modulate = Color.from_hsv(pal[2][0], pal[2][1], pal[2][2])
+			"fin", "orb":
+				ins.modulate = Color.from_hsv(pal[0][0], pal[0][1], pal[0][2])
 		ins.position = GlobalFunctions.string_to_vector2(i["position"])
 		ins.scale =GlobalFunctions.string_to_vector2(i["scale"])
 		ins.rotation_degrees = i["rotation"]
 		$level.get_child(id).get_node("obj").add_child(ins)
-		print($level.get_child(id).name)
 func escape():
 	match menu_switch:
 			true:
