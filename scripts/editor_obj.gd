@@ -39,12 +39,12 @@ func _process(delta: float) -> void:
 				self.queue_free()
 	if $Button.button_pressed:
 		$TextureRect.material.set_shader_parameter("tint", Vector4(0.8, 0.8, 0.8, 1))
-	else:
-		$TextureRect.material.set_shader_parameter("tint", Vector4(1, 1,1, 1))
-		
-		
 
-
+		
+func tint():
+	$TextureRect.material.set_shader_parameter("tint", Vector4(0.8, 0.8, 0.8, 1))
+func untint():
+	$TextureRect.material.set_shader_parameter("tint", Vector4(1, 1,1, 1))
 func _on_button_button_down() -> void:
 	if self.get_parent().get_parent().mode == "rotate":
 		$TextureRect.rotation_degrees += 90
@@ -57,7 +57,7 @@ func _on_button_button_down() -> void:
 				
 			else:
 				$TextureRect.material.set_shader_parameter("scale", Vector2(scale.x, scale.y))
-		
+
 func ldinit():
 	$TextureRect.rotation_degrees = rot
 	if scale_type == "tile":
@@ -66,3 +66,7 @@ func ldinit():
 				
 		else:
 			$TextureRect.material.set_shader_parameter("scale", Vector2(scale.x, scale.y))
+
+
+func _on_button_button_up() -> void:
+	$TextureRect.material.set_shader_parameter("tint", Vector4(1, 1,1, 1))

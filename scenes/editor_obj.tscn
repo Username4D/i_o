@@ -29,3 +29,4 @@ offset_bottom = 48.0
 scale = Vector2(0.5, 0.5)
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]

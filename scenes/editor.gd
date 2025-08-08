@@ -5,9 +5,10 @@ var current_display = "blocks"
 var editor_obj = preload("res://scenes/editor_obj.tscn")
 
 # general
-@export var mode = "none"
+@export var mode = "move"
 @export var load = false
 @export var json: String
+var last_e_obj: Node
 # settings
 var settings_open = true
 
@@ -25,6 +26,11 @@ func _process(delta: float) -> void:
 		self.get_parent().add_child(new)
 		self.queue_free()
 func _ready() -> void:
+	for i in $display_up.get_children():
+		if i.name == mode:
+			i.modulate = Color(1.2, 1.2, 1.2, 1)
+		else:
+			i.modulate = Color.from_hsv(0, 0, 1, 1)
 	$display_down/b_blocks.pressed.connect(update_dd.bind("blocks"))
 	$display_down/b_obstacles.pressed.connect(update_dd.bind("obstacles"))
 	$display_down/b_special.pressed.connect(update_dd.bind("special"))
@@ -50,6 +56,10 @@ func update_dd(b) -> void:
 func pressed_dd(obj, node) -> void:
 	if node.visible:
 		var new = editor_obj.instantiate()
+		if last_e_obj:
+			last_e_obj.untint()
+		last_e_obj = new
+		new.tint()
 		new.position = Vector2(576,320)
 		new.obj = obj
 		new.init()
@@ -171,7 +181,6 @@ func confirm_s():
 	close_confirm_s()
 	if $save.out == "save":
 		await save()
-	
 func close_confirm_s():
 	for i in range(0.0, 20.0,1.0):
 			$save.offset.y =648 * GlobalFunctions.easeInOutQuad( i / 20.0)
