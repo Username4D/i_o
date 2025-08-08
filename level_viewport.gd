@@ -17,6 +17,8 @@ func _ready() -> void:
 	player = lvl.get_node("players/player")
 	$level.add_child(lvl)
 	read_json(level_json, 0)
+	player.position = GlobalFunctions.string_to_vector2(meta["spawn"])  - Vector2(64, 0)
+	lvl.get_node("players/conplayer").position = GlobalFunctions.string_to_vector2(meta["spawn"]) - Vector2(64, 0)
 	lvl.set_meta("palette", meta["palette"]) 
 	apply_colors(lvl, lvl.get_meta("palette"))
 	lvl.set_meta("bronze_time", meta["medals"][2])
@@ -38,7 +40,10 @@ func _physics_process(delta: float) -> void:
 		$level.add_child(lvl)
 		lvl.name = "level"
 		player = lvl.get_node("players/player")
+		
 		read_json(level_json, 1)
+		player.position = GlobalFunctions.string_to_vector2(meta["spawn"])  - Vector2(64, 0)
+		lvl.get_node("players/conplayer").position = GlobalFunctions.string_to_vector2(meta["spawn"]) - Vector2(64, 0)
 		lvl.set_meta("palette", meta["palette"]) 
 		started = false
 		running = false

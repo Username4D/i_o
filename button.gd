@@ -11,7 +11,10 @@ func init() -> void:
 		$Sprite2D.visible = false
 	else:
 		$Sprite2D.texture.region = Rect2((3-medal) * 96, 0, 96, 96)
-	$time.text = var_to_str(pb)
+	if pb != -1:
+		$time.text = var_to_str(pb)
+	else:
+		$time.text = "none"
 	$name.text = lname
 	
 func _on_button_pressed() -> void:

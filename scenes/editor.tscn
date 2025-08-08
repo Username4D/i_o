@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://hwriqj5jbxr6"]
+[gd_scene load_steps=20 format=3 uid="uid://hwriqj5jbxr6"]
 
 [ext_resource type="Script" uid="uid://brcso5n75ip8s" path="res://scenes/editor.gd" id="1_ba0ut"]
 [ext_resource type="Texture2D" uid="uid://cm3wgmpvhntej" path="res://images/fin.svg" id="2_q68jb"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dggcab27822cc" path="res://settings.tscn" id="5_eqbpn"]
 [ext_resource type="Shader" uid="uid://diw2qvsudnia7" path="res://resc/blur.gdshader" id="6_5lcyj"]
 [ext_resource type="PackedScene" uid="uid://572kfoq712k8" path="res://confirm.tscn" id="7_5lcyj"]
+[ext_resource type="PackedScene" uid="uid://da3w4ych2847y" path="res://scenes/editor_obj_spawn.tscn" id="8_5tm2q"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_sldah"]
 
@@ -250,6 +251,9 @@ offset_bottom = 672.0
 layer = 2
 offset = Vector2(0, 648)
 transform = Transform2D(1, 0, 0, 1, 0, 648)
+
+[node name="spawn" parent="." instance=ExtResource("8_5tm2q")]
+position = Vector2(144, 432)
 
 [connection signal="pressed" from="buttons up/setting" to="." method="_on_setting_pressed"]
 [connection signal="pressed" from="buttons up/save" to="." method="save"]
