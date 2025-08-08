@@ -15,7 +15,7 @@ func init() -> void:
 	else:
 		$Sprite2D.texture.region = Rect2((3-medal) * 96, 0, 96, 96)
 	if pb != -1:
-		$time.text = var_to_str(pb)
+		$time.text = var_to_str(round_to_dec(pb, 1))
 	else:
 		$time.text = "none"
 	$name.text = lname
@@ -35,7 +35,8 @@ func move(direction: int):
 	for i in range(0.0, 41.0):
 		new_offset = GlobalFunctions.easeInOutQuad(i / 40.0) * 576 * direction
 		self.position.x -= new_offset - old_offset
-		print((i / 40.0))
 		old_offset = new_offset
 		await get_tree().process_frame
 		
+func round_to_dec(num, digit):
+	return round(num * pow(10.0, digit)) / pow(10.0, digit)

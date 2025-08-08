@@ -64,8 +64,10 @@ func _physics_process(delta: float) -> void:
 			running = false
 	if started:
 		$ui/Label.text = var_to_str(round_to_dec($timers/bronze.time_left, 1))
+		$ui/Label/Label.text ="("+ var_to_str(round_to_dec($timers/bronze.wait_time, 1) - round_to_dec($timers/bronze.time_left, 1)) + ")"
 	else:
 		$ui/Label.text = var_to_str($timers/bronze.wait_time)
+		$ui/Label/Label.text = "(0.0)"
 func start(playero:Node) -> void:
 	$timers/bronze.start()
 	$timers/silver.start()
@@ -97,7 +99,6 @@ func apply_colors(obj, colors) -> void:
 	obj.get_node("bg").modulate = Color.from_hsv(colors[1][0],colors[1][1],colors[1][2])
 	obj.get_node("players").modulate = Color.from_hsv(colors[0][0],colors[0][1],colors[0][2])
 	obj.get_node("blocks").modulate = Color.from_hsv(colors[2][0],colors[2][1],colors[2][2])
-
 func fin():
 	$timers/bronze.paused = true
 	$timers/silver.paused = true
@@ -134,7 +135,20 @@ func read_json(stringjs:String, id):
 		ins.rotation_degrees = i["rotation"]
 		$level.get_child(id).get_node("obj").add_child(ins)
 func escape():
-	match menu_switch:
+	if $timers/bronze.paused and running:
+		self.get_parent().start_black()
+		await ui_handler.black_screen
+
+		if self.campaign == true:
+			var scene = load("res://campaign_menu.tscn").instantiate()
+			self.get_parent().add_child(scene)
+			self.queue_free()
+		else:
+			var scene = load("res://pre_editor.tscn").instantiate()
+			self.get_parent().add_child(scene)
+			self.queue_free()
+	else:
+		match menu_switch:
 			true:
 				menu_switch = false
 				ui_handler.settings_open.emit()
