@@ -103,9 +103,10 @@ func fin():
 	$timers/silver.paused = true
 	$timers/gold.paused = true
 	if campaign:
+		print("new pb run")
 		var lvl_file = FileAccess.open("user://data/campaign_info/"+var_to_str(id)+ ".txt", FileAccess.READ_WRITE)
 		var old = JSON.parse_string(lvl_file.get_as_text())
-		old["pb"] = float(meta["medals"][2]) - $timers/bronze.time_left if float(meta["medals"][2]) - $timers/bronze.time_left < old["pb"] else old["pb"]
+		old["pb"] = float(meta["medals"][2]) - $timers/bronze.time_left if float(meta["medals"][2]) - $timers/bronze.time_left < old["pb"] or old["pb"] == -1 else old["pb"]
 		if $timers/gold.time_left > 0:
 			old["medal"] = 3
 		elif $timers/silver.time_left > 0:

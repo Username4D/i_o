@@ -6,7 +6,7 @@ var first: Node
 var last: Node
 @export var cleft = true
 @export var cright = true
-
+var next_unlocked = true
 func _ready() -> void:
 	for i in range(1, 6):
 		var lvl_json = FileAccess.open("user://data/campaign_levels/" + var_to_str(i)+ ".txt", FileAccess.READ)
@@ -22,6 +22,9 @@ func _ready() -> void:
 		button.pb = info["pb"]
 		button.json = lvl_json.get_as_text()
 		button.id = i
+		button.unlocked = next_unlocked
+		if info["medal"] == 0:
+			next_unlocked = false
 		$buttons.add_child(button)
 		button.init()
 		var bg = bg_scene.instantiate()

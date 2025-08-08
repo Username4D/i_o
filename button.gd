@@ -5,7 +5,10 @@ extends Node2D
 @export var medal: int
 @export var json: String
 @export var id: int
+@export var unlocked = true
 func init() -> void:
+	if not unlocked:
+		self.modulate = Color8(200,200,200,255)
 	await get_tree().process_frame
 	if medal == 0:
 		$Sprite2D.visible = false
@@ -18,7 +21,8 @@ func init() -> void:
 	$name.text = lname
 	
 func _on_button_pressed() -> void:
-	get_parent().get_parent().play(json, id)
+	if unlocked:
+		get_parent().get_parent().play(json, id)
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_left") and self.get_parent().get_parent().cleft:
 		move(-1)
