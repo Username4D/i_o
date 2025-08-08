@@ -28,6 +28,8 @@ func _process(delta: float) -> void:
 		move(-1)
 	if Input.is_action_just_pressed("ui_right") and self.get_parent().get_parent().cright:
 		move(1)
+	if Input.is_action_just_pressed("ui_jump") and self.position.x > 550 and self.position.x < 600:
+		get_parent().get_parent().play(json, id)
 func move(direction: int):
 	await get_tree().process_frame
 	var new_offset = 0

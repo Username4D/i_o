@@ -1,7 +1,7 @@
 extends Node2D
 
 var s = 0
-
+var first = true
 func transition(scene: String):
 	var nscene: PackedScene
 	match scene:
@@ -24,3 +24,14 @@ func _process(delta: float) -> void:
 	s += 0.01
 	if s >= 6.28:
 		s = 0
+
+func _input(event: InputEvent) -> void:
+	if (event is InputEventJoypadButton) or (event is InputEventJoypadMotion):
+		if event is InputEventJoypadMotion:
+			if first and event["axis_value"] != 0.0:
+				$buttons/play.grab_focus()
+				first = false
+		else:
+			if first:
+				$buttons/play.grab_focus()
+				first = false

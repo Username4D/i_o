@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+@export var first = true
+
 func _ready() -> void:
 	for i in $buttons.get_children():
 		i.pressed.connect(pressed.bind(i.name))
@@ -20,3 +22,13 @@ func pressed(button: String) -> void:
 			pass
 		"close":
 			self.get_parent().escape()
+func _input(event: InputEvent) -> void:
+	if (event is InputEventJoypadButton) or (event is InputEventJoypadMotion):
+		if event is InputEventJoypadMotion:
+			if first and event["axis_value"] != 0.0:
+				$buttons/back.grab_focus()
+				first = false
+		else:
+			if first:
+				$buttons/back.grab_focus()
+				first = false

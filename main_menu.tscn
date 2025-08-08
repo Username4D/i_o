@@ -62,7 +62,9 @@ label_settings = SubResource("LabelSettings_fu7sn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="buttons" type="Node2D" parent="."]
+[node name="buttons" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
 
 [node name="play" type="Button" parent="buttons"]
 offset_left = 512.0

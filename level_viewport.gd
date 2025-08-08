@@ -156,4 +156,5 @@ func escape():
 			false:
 				menu_switch = true
 				ui_handler.settings_closed.emit()
+				$settings.first = true
 				$settings.visible = true
