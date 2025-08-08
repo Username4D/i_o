@@ -11,6 +11,8 @@ func transition(scene: String):
 			nscene = load("res://pre_editor.tscn")
 		"editor":
 			nscene = load("res://pre_editor.tscn")
+	self.get_parent().start_black()
+	await ui_handler.black_screen
 	var obj = nscene.instantiate()
 	self.get_parent().add_child(obj)
 	self.queue_free()

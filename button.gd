@@ -12,7 +12,8 @@ func init() -> void:
 	else:
 		$Sprite2D.texture.region = Rect2((3-medal) * 96, 0, 96, 96)
 	$time.text = var_to_str(pb)
-	$name.text = lname	
+	$name.text = lname
+	
 func _on_button_pressed() -> void:
 	get_parent().get_parent().play(json, id)
 func _process(delta: float) -> void:

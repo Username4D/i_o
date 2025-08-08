@@ -6,3 +6,5 @@
 script = ExtResource("1_pxsld")
 
 [node name="buttons" type="Node2D" parent="."]
+
+[node name="bgs" type="Node2D" parent="."]

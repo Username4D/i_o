@@ -101,8 +101,6 @@ func loadl():
 	$settings.level_name = meta["name"]
 	$settings.palette = meta["palette"]
 	$settings.init()
-	
-	
 func save_to_file(content, fname):
 	var file = FileAccess.open("user://" + fname, FileAccess.WRITE)
 	file.store_string(content)

@@ -6,6 +6,8 @@ func _ready() -> void:
 func pressed(button: String) -> void:
 	match button:
 		"back":
+			self.get_parent().start_black()
+			await ui_handler.black_screen
 			if self.get_parent().campaign == true:
 				var scene = load("res://campaign_menu.tscn").instantiate()
 				self.get_parent().get_parent().add_child(scene)

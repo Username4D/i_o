@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://8j6oewr1yado"]
+
+[ext_resource type="Script" uid="uid://bvh076avm6ayw" path="res://bg_block.gd" id="1_dsijy"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_tlj1v"]
+size = Vector2(1088, 576)
+
+[node name="bg_block" type="Node2D"]
+z_index = -3
+script = ExtResource("1_dsijy")
+
+[node name="wall" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(0, 0, 0, 672, 768, 672, 768, 544, 64, 544, 64, 96, 1088, 96, 1088, 544, 480, 544, 480, 672, 1152, 672, 1152, 0)
+
+[node name="bg" type="MeshInstance2D" parent="."]
+z_index = -1
+position = Vector2(576, 320)
+scale = Vector2(0.1, 0.1)
+mesh = SubResource("QuadMesh_tlj1v")

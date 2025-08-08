@@ -19,6 +19,8 @@ func _ready() -> void:
 			but.grab()
 		first = false
 func load_editor(lvl):
+	self.get_parent().start_black()
+	await ui_handler.black_screen
 	var editor = load("res://scenes/editor.tscn").instantiate()
 	editor.load = true
 	editor.json = load_from_file(lvl)
@@ -37,11 +39,15 @@ func load_lfrom_file(fname):
 	var content = file.get_as_text()
 	return content
 func _on_button_pressed() -> void:
+	self.get_parent().start_black()
+	await ui_handler.black_screen
 	var editor = load("res://scenes/editor.tscn").instantiate()
 	editor.load = false
 	self.get_parent().add_child(editor)
 	self.queue_free()
 func play(lvl):
+	self.get_parent().start_black()
+	await ui_handler.black_screen
 	var level = load("res://scenes/level_viewport.tscn").instantiate()
 	level.level_json = load_from_file(lvl)
 	level.campaign = false
