@@ -1,0 +1,150 @@
+{
+	"meta": {
+		"last_edit": {
+			"day": 8,
+			"month": 8,
+			"weekday": 5,
+			"year": 2025
+		},
+		"medals": [
+			10,
+			20,
+			30
+		],
+		"name": "wall jump waves",
+		"palette": [
+			[
+				0.57,
+				0.63,
+				1.0
+			],
+			[
+				0.6,
+				0.84,
+				0.64
+			],
+			[
+				0.63,
+				1.0,
+				0.35
+			]
+		],
+		"spawn": "(976.0, 496.0)"
+	},
+	"objects": [
+		{
+			"object": "block",
+			"position": "(240.0, 496.0)",
+			"rotation": 0,
+			"scale": "(-11.0, 1.0)"
+		},
+		{
+			"object": "block",
+			"position": "(400.0, 528.0)",
+			"rotation": 0,
+			"scale": "(-21.0, 1.0)"
+		},
+		{
+			"object": "block",
+			"position": "(272.0, 304.0)",
+			"rotation": 0,
+			"scale": "(3.0, -5.0)"
+		},
+		{
+			"object": "block",
+			"position": "(336.0, 240.0)",
+			"rotation": 0,
+			"scale": "(-7.0, 1.0)"
+		},
+		{
+			"object": "block",
+			"position": "(432.0, 272.0)",
+			"rotation": 0,
+			"scale": "(-13.0, 1.0)"
+		},
+		{
+			"object": "block",
+			"position": "(592.0, 304.0)",
+			"rotation": 0,
+			"scale": "(17.0, -1.0)"
+		},
+		{
+			"object": "block",
+			"position": "(688.0, 336.0)",
+			"rotation": 0,
+			"scale": "(25.0, 1.0)"
+		},
+		{
+			"object": "block",
+			"position": "(656.0, 368.0)",
+			"rotation": 0,
+			"scale": "(-27.0, -1.0)"
+		},
+		{
+			"object": "block",
+			"position": "(848.0, 144.0)",
+			"rotation": 0,
+			"scale": "(-7.0, 1.0)"
+		},
+		{
+			"object": "block",
+			"position": "(848.0, 112.0)",
+			"rotation": 0,
+			"scale": "(-15.0, 1.0)"
+		},
+		{
+			"object": "block",
+			"position": "(944.0, 208.0)",
+			"rotation": 0,
+			"scale": "(1.0, 1.0)"
+		},
+		{
+			"object": "block",
+			"position": "(912.0, 176.0)",
+			"rotation": 0,
+			"scale": "(-3.0, 1.0)"
+		},
+		{
+			"object": "block",
+			"position": "(976.0, 432.0)",
+			"rotation": 0,
+			"scale": "(-7.0, 1.0)"
+		},
+		{
+			"object": "block",
+			"position": "(816.0, 400.0)",
+			"rotation": 0,
+			"scale": "(-17.0, 1.0)"
+		},
+		{
+			"object": "spike",
+			"position": "(464.0, 496.0)",
+			"rotation": 0,
+			"scale": "(-3.0, 1.0)"
+		},
+		{
+			"object": "spike",
+			"position": "(496.0, 240.0)",
+			"rotation": 0,
+			"scale": "(-3.0, 1.0)"
+		},
+		{
+			"object": "spike",
+			"position": "(688.0, 272.0)",
+			"rotation": 0,
+			"scale": "(-3.0, 1.0)"
+		},
+		{
+			"object": "spike",
+			"position": "(112.0, 464.0)",
+			"rotation": 0,
+			"scale": "(-3.0, 1.0)"
+		},
+		{
+			"object": "fin",
+			"position": "(1008.0, 176.0)",
+			"rotation": 0,
+			"scale": "(1.0, 1.0)"
+		}
+	]
+}

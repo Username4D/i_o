@@ -1,0 +1,78 @@
+{
+	"meta": {
+		"last_edit": {
+			"day": 6,
+			"month": 8,
+			"weekday": 3,
+			"year": 2025
+		},
+		"medals": [
+			4.8,
+			8,
+			16
+		],
+		"name": "Friendly Fields",
+		"palette": [
+			[
+				1.0,
+				0.59,
+				1.0
+			],
+			[
+				0.92,
+				0.81,
+				0.79
+			],
+			[
+				0.84,
+				1.0,
+				0.55
+			]
+		],
+		"spawn": "(144.0, 528.0)"
+	},
+	"objects": [
+		{
+			"object": "block",
+			"position": "(880.0, 496.0)",
+			"rotation": 0.0,
+			"scale": "(-13.0, -3.0)"
+		},
+		{
+			"object": "spike",
+			"position": "(592.0, 528.0)",
+			"rotation": 0.0,
+			"scale": "(-3.0, 1.0)"
+		},
+		{
+			"object": "spike",
+			"position": "(880.0, 432.0)",
+			"rotation": 0.0,
+			"scale": "(-3.0, 1.0)"
+		},
+		{
+			"object": "block",
+			"position": "(208.0, 240.0)",
+			"rotation": 0.0,
+			"scale": "(-9.0, -9.0)"
+		},
+		{
+			"object": "spike",
+			"position": "(368.0, 240.0)",
+			"rotation": 90.0,
+			"scale": "(1.0, -9.0)"
+		},
+		{
+			"object": "block",
+			"position": "(592.0, 496.0)",
+			"rotation": 0.0,
+			"scale": "(1.0, 1.0)"
+		},
+		{
+			"object": "fin",
+			"position": "(1040.0, 400.0)",
+			"rotation": 0,
+			"scale": "(1.0, 1.0)"
+		}
+	]
+}

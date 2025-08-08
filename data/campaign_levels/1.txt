@@ -1,0 +1,42 @@
+{
+	"meta": {
+		"last_edit": {
+			"day": 6,
+			"month": 8,
+			"weekday": 3,
+			"year": 2025
+		},
+		"medals": [
+			8,
+			16,
+			30
+		],
+		"name": "straight line simulator",
+		"palette": [
+			[
+				0.22,
+				0.43,
+				1.0
+			],
+			[
+				0.26,
+				0.66,
+				0.76
+			],
+			[
+				0.31,
+				1.0,
+				0.51
+			]
+		],
+		"spawn": "(144.0, 528.0)"
+	},
+	"objects": [
+		{
+			"object": "fin",
+			"position": "(976.0, 464.0)",
+			"rotation": 0,
+			"scale": "(1.0, 1.0)"
+		}
+	]
+}
