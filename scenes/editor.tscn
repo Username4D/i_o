@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://hwriqj5jbxr6"]
+[gd_scene load_steps=22 format=3 uid="uid://hwriqj5jbxr6"]
 
 [ext_resource type="Script" uid="uid://brcso5n75ip8s" path="res://scenes/editor.gd" id="1_ba0ut"]
 [ext_resource type="Texture2D" uid="uid://cm3wgmpvhntej" path="res://images/fin.svg" id="2_q68jb"]
@@ -8,6 +8,7 @@
 [ext_resource type="Shader" uid="uid://diw2qvsudnia7" path="res://resc/blur.gdshader" id="6_5lcyj"]
 [ext_resource type="PackedScene" uid="uid://572kfoq712k8" path="res://confirm.tscn" id="7_5lcyj"]
 [ext_resource type="PackedScene" uid="uid://da3w4ych2847y" path="res://scenes/editor_obj_spawn.tscn" id="8_5tm2q"]
+[ext_resource type="PackedScene" uid="uid://3jpsugbwimyh" path="res://save.tscn" id="9_j8y2p"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_sldah"]
 
@@ -36,7 +37,10 @@ shader_parameter/columnas = 32
 shader_parameter/tamano_cuadro = 45.47
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xg7d5"]
-bg_color = Color(0.29, 0.29, 0.29, 0.756863)
+bg_color = Color(0.25098, 0.25098, 0.25098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5tm2q"]
+bg_color = Color(0.25, 0.25, 0.25, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5tm2q"]
 resource_local_to_scene = true
@@ -189,6 +193,7 @@ offset_top = 16.0
 offset_right = 800.0
 offset_bottom = 80.0
 theme_override_styles/focus = SubResource("StyleBoxFlat_xg7d5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5tm2q")
 text = "move"
 
 [node name="delete" type="Button" parent="display_up"]
@@ -197,6 +202,7 @@ offset_top = 16.0
 offset_right = 1088.0
 offset_bottom = 80.0
 theme_override_styles/focus = SubResource("StyleBoxFlat_xg7d5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5tm2q")
 text = "delete
 "
 
@@ -206,6 +212,7 @@ offset_top = 16.0
 offset_right = 896.0
 offset_bottom = 80.0
 theme_override_styles/focus = SubResource("StyleBoxFlat_xg7d5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5tm2q")
 text = "rotate"
 
 [node name="scale" type="Button" parent="display_up"]
@@ -214,6 +221,7 @@ offset_top = 16.0
 offset_right = 992.0
 offset_bottom = 80.0
 theme_override_styles/focus = SubResource("StyleBoxFlat_xg7d5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5tm2q")
 text = "scale"
 
 [node name="settings" parent="." instance=ExtResource("5_eqbpn")]
@@ -254,6 +262,11 @@ transform = Transform2D(1, 0, 0, 1, 0, 648)
 
 [node name="spawn" parent="." instance=ExtResource("8_5tm2q")]
 position = Vector2(144, 432)
+
+[node name="save" parent="." instance=ExtResource("9_j8y2p")]
+layer = 2
+offset = Vector2(0, 648)
+transform = Transform2D(1, 0, 0, 1, 0, 648)
 
 [connection signal="pressed" from="buttons up/setting" to="." method="_on_setting_pressed"]
 [connection signal="pressed" from="buttons up/save" to="." method="save"]

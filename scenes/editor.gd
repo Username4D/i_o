@@ -17,6 +17,13 @@ var levels_array = []
 func _process(delta: float) -> void:
 	process_dd()
 	$ColorRect.visible = not settings_open
+	if Input.is_action_just_pressed("ui_escape"):
+		await confirm_s()
+		self.get_parent().start_black()
+		await ui_handler.black_screen
+		var new = load("res://pre_editor.tscn").instantiate()
+		self.get_parent().add_child(new)
+		self.queue_free()
 func _ready() -> void:
 	$display_down/b_blocks.pressed.connect(update_dd.bind("blocks"))
 	$display_down/b_obstacles.pressed.connect(update_dd.bind("obstacles"))
@@ -49,6 +56,11 @@ func pressed_dd(obj, node) -> void:
 		$level.add_child(new)
 func pressed_ud(obj):
 	mode = obj.name
+	for i in $display_up.get_children():
+		if i.name == mode:
+			i.modulate = Color(1.2, 1.2, 1.2, 1)
+		else:
+			i.modulate = Color.from_hsv(0, 0, 1, 1)
 func _on_setting_pressed() -> void:
 	await get_tree().process_frame
 	if $settings.medals[0] <= $settings.medals[1] and $settings.medals[1] <= $settings.medals[2]:
@@ -130,6 +142,39 @@ func confirm():
 func close_confirm():
 	for i in range(0.0, 20.0,1.0):
 			$settings2.offset.y =648 * GlobalFunctions.easeInOutQuad( i / 20.0)
+			$ColorRect.material.set_shader_parameter("blur_strength",1 - i / 10 + 0.1)
+			await get_tree().process_frame
+			await get_tree().process_frame
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("editor_1"):
+		mode ="move"
+	if event.is_action_pressed("2"):
+		mode ="rotate"
+	if event.is_action_pressed("3"):
+		mode ="scale"
+	if event.is_action_pressed("4"):
+		mode ="delete"
+	for i in $display_up.get_children():
+		if i.name == mode:
+			i.modulate = Color(1.2, 1.2, 1.2, 1)
+		else:
+			i.modulate = Color.from_hsv(0, 0, 1, 1)
+func confirm_s():
+	for i in range(0.0, 20.0,1.0):
+		$save.offset.y = 648 * GlobalFunctions.easeInOutQuad(1 -(i / 20.0))
+		$ColorRect.material.set_shader_parameter("blur_strength", i /10 + 0.1)
+		await get_tree().process_frame
+		await get_tree().process_frame
+	await $save.lol
+	print("yoooooo")
+	await get_tree().process_frame
+	close_confirm_s()
+	if $save.out == "save":
+		await save()
+	
+func close_confirm_s():
+	for i in range(0.0, 20.0,1.0):
+			$save.offset.y =648 * GlobalFunctions.easeInOutQuad( i / 20.0)
 			$ColorRect.material.set_shader_parameter("blur_strength",1 - i / 10 + 0.1)
 			await get_tree().process_frame
 			await get_tree().process_frame

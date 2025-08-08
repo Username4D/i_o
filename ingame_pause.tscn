@@ -11,7 +11,7 @@ font_size = 79
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gc0em"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cj1lu"]
-bg_color = Color(0.537011, 0.537011, 0.537011, 1)
+bg_color = Color(0, 0, 0, 0.490196)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_71mqq"]
 
@@ -23,14 +23,7 @@ offset_left = 224.0
 offset_top = 96.0
 offset_right = 928.0
 offset_bottom = 544.0
-color = Color(0.427493, 0.427493, 0.427493, 1)
-
-[node name="ColorRect2" type="ColorRect" parent="."]
-z_index = -1
-offset_left = 220.0
-offset_top = 92.0
-offset_right = 932.0
-offset_bottom = 548.0
+color = Color(0, 0, 0, 0.262745)
 
 [node name="title" type="Label" parent="."]
 offset_left = 224.0
@@ -55,7 +48,6 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_gc0em")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_cj1lu")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_71mqq")
 text = "back"
-metadata/_edit_use_anchors_ = true
 
 [node name="settings" type="Button" parent="buttons"]
 offset_left = 224.0
