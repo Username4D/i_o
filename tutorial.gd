@@ -12,6 +12,8 @@ func update_text_typewrite(txt: String, fast: bool = false) -> void:
 			await get_tree().process_frame
 		await get_tree().process_frame
 func _ready() -> void:
+	disable_esc()
+	disable_lr_jump()
 	await tutorial_step(0, $text_box/continue, $text_box/continue.pressed)
 	await tutorial_step(1, $global_view/main_menu/buttons/play, $global_view/main_menu/buttons/play.pressed)
 	await ui_handler.black_screen
@@ -19,10 +21,13 @@ func _ready() -> void:
 	await get_tree().process_frame
 	$text_box.position.y += 96
 	await tutorial_step_fin(3)
-	await update_text_typewrite("Great! Now head back to the main menu", true)
+	renable_esc()
+	await update_text_typewrite("Great! Now head back to the main menu.", true)
+	disable_lr_jump()
 	await ui_handler.black_screen
 	$text_box.position.y += -96
 	await ui_handler.black_screen
+	disable_esc()
 	await get_tree().process_frame
 	await tutorial_step(4, $global_view/main_menu/buttons/editor, $global_view/main_menu/buttons/editor.pressed)
 	await ui_handler.black_screen
@@ -44,6 +49,8 @@ func _ready() -> void:
 	$focus.modulate.a = 1
 	$focus.position = Vector2(912 - 576 - 128 - 64, 48)
 	await tutorial_step(8, $text_box/continue, $text_box/continue.pressed)
+	renable_lr_jump()
+	renable_esc()
 	var gl = load("res://global_view.tscn").instantiate()
 	gl.get_node("main_menu").queue_free()
 	$global_view/editor.reparent(gl)
@@ -96,7 +103,7 @@ func tutorial_step_fin(n: int):
 	var text = stats[n]["text"]
 	var pos = stats[n]["pos"]
 	await update_text_typewrite(text)
-	
+	renable_lr_jump()
 	if use_c:
 		$text_box/continue.visible = true
 		await $text_box/continue.pressed
@@ -111,3 +118,28 @@ func tutorial_step_fin(n: int):
 	$block.visible = true
 	$text_box/continue.visible = false
 	$focus.modulate.a = 0
+
+var jump_input_events
+var lrj = {}
+func disable_esc(): 
+	jump_input_events = InputMap.action_get_events("ui_escape") 
+	InputMap.action_erase_events("ui_escape")
+
+func renable_esc(): 
+	for input_event in jump_input_events: 
+		InputMap.action_add_event("ui_escape", input_event)
+
+func disable_lr_jump(): 
+	lrj["left"] = InputMap.action_get_events("ui_left") 
+	InputMap.action_erase_events("ui_left")
+	lrj["right"] = InputMap.action_get_events("ui_right") 
+	InputMap.action_erase_events("ui_right")
+	lrj["jump"] = InputMap.action_get_events("ui_jump") 
+	InputMap.action_erase_events("ui_jump")
+func renable_lr_jump(): 
+	for input_event in lrj["left"]: 
+		InputMap.action_add_event("ui_left", input_event)
+	for input_event in lrj["right"]: 
+		InputMap.action_add_event("ui_right", input_event)
+	for input_event in lrj["jump"]: 
+		InputMap.action_add_event("ui_jump", input_event)
