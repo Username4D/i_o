@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://hwriqj5jbxr6"]
+[gd_scene load_steps=25 format=3 uid="uid://hwriqj5jbxr6"]
 
 [ext_resource type="Script" uid="uid://brcso5n75ip8s" path="res://scenes/editor.gd" id="1_ba0ut"]
+[ext_resource type="Texture2D" uid="uid://ripmkoemswbt" path="res://images/editor_sheet_high.svg" id="2_o435n"]
 [ext_resource type="Texture2D" uid="uid://cm3wgmpvhntej" path="res://images/fin.svg" id="2_q68jb"]
 [ext_resource type="Texture2D" uid="uid://1e0d5mowt1ev" path="res://images/spike.svg" id="3_xg7d5"]
 [ext_resource type="Shader" uid="uid://doof63a004w0v" path="res://resc/grid.gdshader" id="4_q68jb"]
@@ -28,6 +29,14 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q68jb"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vi5u"]
+atlas = ExtResource("2_o435n")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78fwb"]
+atlas = ExtResource("2_o435n")
+region = Rect2(129, 0, 62, 64)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xg7d5"]
 shader = ExtResource("4_q68jb")
@@ -124,7 +133,7 @@ pivot_offset = Vector2(48, 48)
 theme_override_constants/h_separation = 0
 theme_override_constants/icon_max_width = 64
 theme_override_constants/align_to_largest_stylebox = 0
-icon = ExtResource("2_q68jb")
+icon = SubResource("AtlasTexture_3vi5u")
 icon_alignment = 1
 
 [node name="obstacles" type="Node2D" parent="display_down/rows"]
@@ -169,7 +178,7 @@ pivot_offset = Vector2(48, 48)
 theme_override_constants/h_separation = 0
 theme_override_constants/icon_max_width = 64
 theme_override_constants/align_to_largest_stylebox = 0
-icon = ExtResource("2_q68jb")
+icon = SubResource("AtlasTexture_78fwb")
 icon_alignment = 1
 
 [node name="bg" type="Node2D" parent="."]
