@@ -19,12 +19,15 @@ func _ready() -> void:
 		for i in range(1, 6):
 			var file = FileAccess.open("user://data/campaign_info/" + var_to_str(i) + ".txt" , FileAccess.WRITE)
 			file.store_string(JSON.stringify({"medal":0,"pb":-1,"unlocked":true}))
-		var file = FileAccess.open("user://data/levels.txt", FileAccess.WRITE)
-		file.store_string(JSON.stringify([]))
+			file.close()
+		var fil = FileAccess.open("user://data/levels.txt", FileAccess.WRITE)
+		fil.store_string(JSON.stringify([]))
+		fil.close()
 		var l = FileAccess.open("user://data/settings.txt", FileAccess.WRITE)
 		var dicddt = {"vsync": false, "max_fps": 240}
 		print(JSON.stringify("looo"))
 		l.store_string(JSON.stringify(dicddt))
+		l.close()
 		first_boot = FileAccess.open("user://lol.dat", FileAccess.WRITE)
 		first_boot.store_string("no")
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
@@ -32,6 +35,10 @@ func _ready() -> void:
 		await get_tree().process_frame
 		var popup = load("res://tutorial_popup.tscn").instantiate()
 		self.add_child(popup)
+		popup.offset.y = 600
+		for i in range(1.0, 61.0):
+			popup.offset.y = 600 - 10* i
+			await get_tree().process_frame
 		await popup.lol
 		await get_tree().process_frame
 		if popup.out == "save":

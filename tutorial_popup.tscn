@@ -16,6 +16,12 @@ bg_color = Color(0, 0, 0, 0.101961)
 [node name="settings" type="CanvasLayer"]
 script = ExtResource("1_l5emp")
 
+[node name="ColorRect3" type="ColorRect" parent="."]
+offset_top = -928.0
+offset_right = 1152.0
+offset_bottom = 1472.0
+color = Color(0, 0, 0, 0.0627451)
+
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = 352.0
 offset_top = 224.0
