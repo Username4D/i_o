@@ -3,17 +3,18 @@ extends Node2D
 var s = 0
 var first = true
 func transition(scene: String):
-	var nscene: PackedScene
+	var nscene: Node
 	match scene:
 		"play":
-			nscene = load("res://campaign_menu.tscn")
+			nscene = load("res://campaign_menu.tscn").instantiate()
 		"settings":
-			nscene = load("res://pre_editor.tscn")
+			nscene = load("res://scenes/settings.tscn").instantiate()
+			nscene.last = "main"
 		"editor":
-			nscene = load("res://pre_editor.tscn")
+			nscene = load("res://pre_editor.tscn").instantiate()
 	self.get_parent().start_black()
 	await ui_handler.black_screen
-	var obj = nscene.instantiate()
+	var obj = nscene
 	self.get_parent().add_child(obj)
 	self.queue_free()
 func _ready() -> void:

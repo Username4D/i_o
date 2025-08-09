@@ -19,7 +19,16 @@ func pressed(button: String) -> void:
 				self.get_parent().get_parent().add_child(scene)
 				self.get_parent().queue_free()
 		"settings":
-			pass
+			self.get_parent().get_parent().start_black()
+			await ui_handler.black_screen
+
+			var scene = load("res://scenes/settings.tscn").instantiate()
+			scene.id = get_parent().id
+			scene.json = get_parent().level_json
+			scene.camp = get_parent().campaign
+			scene.last = "lvl"
+			self.get_parent().get_parent().add_child(scene)
+			self.get_parent().queue_free()
 		"close":
 			self.get_parent().escape()
 func _input(event: InputEvent) -> void:
