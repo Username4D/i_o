@@ -22,13 +22,29 @@ func _ready() -> void:
 		var file = FileAccess.open("user://data/levels.txt", FileAccess.WRITE)
 		file.store_string(JSON.stringify([]))
 		var l = FileAccess.open("user://data/settings.txt", FileAccess.WRITE)
-		l.store_string(JSON.stringify({"vsync": false, "max_fps": 240}))
+		var dicddt = {"vsync": false, "max_fps": 240}
+		print(JSON.stringify("looo"))
+		l.store_string(JSON.stringify(dicddt))
 		first_boot = FileAccess.open("user://lol.dat", FileAccess.WRITE)
 		first_boot.store_string("no")
-	var load = FileAccess.open("user://data/settings.txt", FileAccess.READ)
-	var sett = JSON.parse_string(load.get_as_text())
-	if sett["vsync"]:
-		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
-	else:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
-		Engine.max_fps = int(sett["max_fps"])
+		Engine.max_fps = int(240)
+		await get_tree().process_frame
+		var popup = load("res://tutorial_popup.tscn").instantiate()
+		self.add_child(popup)
+		await popup.lol
+		await get_tree().process_frame
+		if popup.out == "save":
+			var tut = load("res://tutorial.tscn").instantiate()
+			self.get_parent().add_child(tut)
+			self.queue_free()
+		else:
+			popup.queue_free()
+	else:
+		var load = FileAccess.open("user://data/settings.txt", FileAccess.READ)
+		var sett = JSON.parse_string(load.get_as_text())
+		if sett["vsync"]:
+			DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+		else:
+			DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+			Engine.max_fps = int(sett["max_fps"])

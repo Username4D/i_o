@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://3jpsugbwimyh"]
+[gd_scene load_steps=6 format=3 uid="uid://b2j62rvv2au0q"]
 
-[ext_resource type="Script" uid="uid://db7sxkugko7sx" path="res://confirm.gd" id="1_tknle"]
+[ext_resource type="Script" uid="uid://db7sxkugko7sx" path="res://confirm.gd" id="1_l5emp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gbfgj"]
 
@@ -14,13 +14,7 @@ bg_color = Color(0, 0, 0, 0.545098)
 bg_color = Color(0, 0, 0, 0.101961)
 
 [node name="settings" type="CanvasLayer"]
-layer = 10
-script = ExtResource("1_tknle")
-
-[node name="ColorRect3" type="ColorRect" parent="."]
-offset_right = 1152.0
-offset_bottom = 672.0
-color = Color(1, 1, 1, 0)
+script = ExtResource("1_l5emp")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = 352.0
@@ -41,9 +35,10 @@ offset_left = 384.0
 offset_top = 256.0
 offset_right = 768.0
 offset_bottom = 320.0
-text = "save?"
+text = "Looks like this is your first time. Do you want a Tutorial?"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="save" type="Button" parent="."]
 offset_left = 352.0
@@ -54,7 +49,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_gbfgj")
 theme_override_styles/hover = SubResource("StyleBoxFlat_gbfgj")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_q2ou8")
 theme_override_styles/normal = SubResource("StyleBoxFlat_gjhr6")
-text = "save"
+text = "yes"
 
 [node name="cancel" type="Button" parent="."]
 offset_left = 576.0
@@ -65,7 +60,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_gbfgj")
 theme_override_styles/hover = SubResource("StyleBoxFlat_gbfgj")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_q2ou8")
 theme_override_styles/normal = SubResource("StyleBoxFlat_gjhr6")
-text = "dont save"
+text = "no"
 
 [connection signal="pressed" from="save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="cancel" to="." method="_on_save_pressed"]
