@@ -21,6 +21,14 @@ func _ready() -> void:
 			file.store_string(JSON.stringify({"medal":0,"pb":-1,"unlocked":true}))
 		var file = FileAccess.open("user://data/levels.txt", FileAccess.WRITE)
 		file.store_string(JSON.stringify([]))
+		var l = FileAccess.open("user://data/settings.txt", FileAccess.WRITE)
+		l.store_string(JSON.stringify({"vsync": false, "max_fps": 240}))
 		first_boot = FileAccess.open("user://lol.dat", FileAccess.WRITE)
 		first_boot.store_string("no")
-		
+	var load = FileAccess.open("user://data/settings.txt", FileAccess.READ)
+	var sett = JSON.parse_string(load.get_as_text())
+	if sett["vsync"]:
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+	else:
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+		Engine.max_fps = int(sett["max_fps"])

@@ -28,6 +28,8 @@ func check_text(obj: Node, sets: Array) -> void:
 		obj.text = newtext
 	if obj.text == "":
 		obj.text = obj.placeholder_text
+	if int(obj.text) == 0 or int(obj.text) > 240:
+		obj.text = 240
 func _process(delta: float) -> void:
 	if $Control/vsync.button_pressed:
 		$Control/max_fps.modulate.a = 0.5
@@ -56,3 +58,10 @@ func _on_button_pressed() -> void:
 	else:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 		Engine.max_fps = int($Control/max_fps.text)
+	var load = FileAccess.open("user://data/settings.txt", FileAccess.WRITE)
+	load.store_string(JSON.stringify({"vsync": $Control/vsync.button_pressed, "max_fps": int($Control/max_fps.text)}))
+func _ready() -> void:
+	var load = FileAccess.open("user://data/settings.txt", FileAccess.READ)
+	var sett = JSON.parse_string(load.get_as_text())
+	$Control/vsync.button_pressed = sett["vsync"]
+	$Control/max_fps.text = var_to_str(int(sett["max_fps"]))

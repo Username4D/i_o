@@ -37,12 +37,11 @@ offset_right = 1152.0
 offset_bottom = 672.0
 
 [node name="max_fps" type="LineEdit" parent="Control"]
-layout_mode = 0
 offset_left = 512.0
 offset_top = 256.0
 offset_right = 768.0
 offset_bottom = 288.0
-placeholder_text = "Use 0 for no limit"
+placeholder_text = "Max: 240"
 
 [node name="vsync" type="CheckButton" parent="Control"]
 layout_mode = 0
