@@ -1,0 +1,125 @@
+[gd_scene load_steps=12 format=3 uid="uid://c1poi2plmalsi"]
+
+[ext_resource type="Script" uid="uid://pltyfob027g8" path="res://global_settings.gd" id="1_5p8wc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5p8wc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r6d6q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6wm04"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f4mfi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_es4n0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5p8wc"]
+bg_color = Color(0, 0, 0, 0.152941)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_83j8s"]
+bg_color = Color(0, 0, 0, 0.32549)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gjs24"]
+bg_color = Color(0, 0, 0, 0.631373)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6d6q"]
+bg_color = Color(0, 0, 0, 0.152941)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4ppmf"]
+font_size = 76
+
+[node name="settings" type="Node2D"]
+script = ExtResource("1_5p8wc")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 672.0
+
+[node name="max_fps" type="LineEdit" parent="Control"]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 256.0
+offset_right = 768.0
+offset_bottom = 288.0
+placeholder_text = "Use 0 for no limit"
+
+[node name="vsync" type="CheckButton" parent="Control"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 288.0
+offset_right = 654.75
+offset_bottom = 320.0
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5p8wc")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_r6d6q")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_6wm04")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_f4mfi")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_es4n0")
+text = " V-Sync"
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 512.0
+offset_right = 640.0
+offset_bottom = 544.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_5p8wc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_83j8s")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gjs24")
+theme_override_styles/normal = SubResource("StyleBoxFlat_r6d6q")
+text = "apply"
+
+[node name="label" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="label"]
+offset_left = 384.0
+offset_top = 256.0
+offset_right = 768.0
+offset_bottom = 288.0
+text = " Max FPS"
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="label"]
+offset_left = 384.0
+offset_top = 416.0
+offset_right = 768.0
+offset_bottom = 491.0
+text = "This project was made possible by the awesome team and open-source Contributors of the Godot engine."
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="label"]
+offset_left = 384.0
+offset_top = 192.0
+offset_right = 768.0
+offset_bottom = 224.0
+text = "Performance"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="label"]
+offset_left = 384.0
+offset_top = 352.0
+offset_right = 768.0
+offset_bottom = 384.0
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="label"]
+offset_top = 32.0
+offset_right = 1152.0
+offset_bottom = 192.0
+text = "Settings"
+label_settings = SubResource("LabelSettings_4ppmf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="text_submitted" from="Control/max_fps" to="." method="_on_max_fps_text_submitted"]
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
