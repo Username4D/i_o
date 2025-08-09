@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 		$Control/max_fps.modulate.a = 0.5
 	else:
 		$Control/max_fps.modulate.a = 1
-	if Input.is_action_just_pressed("ui_escape"):
+	if Input.is_action_just_pressed("ui_escape") and $settings.visible == false:
 		if last == "main":
 			self.get_parent().start_black()
 			await ui_handler.black_screen
@@ -51,6 +51,8 @@ func _process(delta: float) -> void:
 			level.id = id
 			self.get_parent().add_child(level)
 			self.queue_free()
+	elif Input.is_action_just_pressed("ui_escape"):
+		$settings.visible = false
 func _on_button_pressed() -> void:
 	await get_tree().process_frame
 	if $Control/vsync.button_pressed:
@@ -65,3 +67,5 @@ func _ready() -> void:
 	var sett = JSON.parse_string(load.get_as_text())
 	$Control/vsync.button_pressed = sett["vsync"]
 	$Control/max_fps.text = var_to_str(int(sett["max_fps"]))
+func _on_button_2_pressed() -> void:
+	$settings.visible = true

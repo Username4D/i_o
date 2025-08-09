@@ -11,10 +11,13 @@ config_version=5
 [application]
 
 config/name="i_o"
-run/main_scene="uid://7u2n21bqx1hv"
+run/main_scene="uid://cc0eyvwrs30m2"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="i_o"
 config/features=PackedStringArray("4.4")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
+boot_splash/image="uid://rrc4ekkkojle"
 config/icon="res://icon.svg"
 
 [autoload]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://c1poi2plmalsi"]
+[gd_scene load_steps=13 format=3 uid="uid://c1poi2plmalsi"]
 
 [ext_resource type="Script" uid="uid://pltyfob027g8" path="res://global_settings.gd" id="1_5p8wc"]
+[ext_resource type="PackedScene" uid="uid://chlhd8xuqb6pq" path="res://license.tscn" id="2_r6d6q"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5p8wc"]
 
@@ -39,17 +40,17 @@ offset_bottom = 672.0
 [node name="max_fps" type="LineEdit" parent="Control"]
 layout_mode = 0
 offset_left = 512.0
-offset_top = 256.0
+offset_top = 224.0
 offset_right = 768.0
-offset_bottom = 288.0
+offset_bottom = 256.0
 placeholder_text = "Max: 240"
 
 [node name="vsync" type="CheckButton" parent="Control"]
 layout_mode = 0
 offset_left = 384.0
-offset_top = 288.0
+offset_top = 256.0
 offset_right = 654.75
-offset_bottom = 320.0
+offset_bottom = 288.0
 theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
@@ -65,61 +66,77 @@ text = " V-Sync"
 
 [node name="Button" type="Button" parent="Control"]
 layout_mode = 0
-offset_left = 512.0
-offset_top = 512.0
-offset_right = 640.0
-offset_bottom = 544.0
+offset_left = 480.0
+offset_top = 544.0
+offset_right = 672.0
+offset_bottom = 576.0
 theme_override_styles/focus = SubResource("StyleBoxFlat_5p8wc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_83j8s")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_gjs24")
 theme_override_styles/normal = SubResource("StyleBoxFlat_r6d6q")
 text = "apply"
 
+[node name="Button2" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 480.0
+offset_right = 672.0
+offset_bottom = 512.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_5p8wc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_83j8s")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gjs24")
+theme_override_styles/normal = SubResource("StyleBoxFlat_r6d6q")
+text = "credits/license"
+
 [node name="label" type="Node2D" parent="."]
 
 [node name="Label" type="Label" parent="label"]
 offset_left = 384.0
-offset_top = 256.0
+offset_top = 224.0
 offset_right = 768.0
-offset_bottom = 288.0
+offset_bottom = 256.0
 text = " Max FPS"
 vertical_alignment = 1
 
 [node name="Label4" type="Label" parent="label"]
 offset_left = 384.0
-offset_top = 416.0
+offset_top = 384.0
 offset_right = 768.0
-offset_bottom = 491.0
-text = "This project was made possible by the awesome team and open-source Contributors of the Godot engine."
+offset_bottom = 448.0
+text = "This project was made possible by the awesome team of the Godot Engine."
 vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="Label2" type="Label" parent="label"]
 offset_left = 384.0
-offset_top = 192.0
+offset_top = 160.0
 offset_right = 768.0
-offset_bottom = 224.0
+offset_bottom = 192.0
 text = "Performance"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="label"]
 offset_left = 384.0
-offset_top = 352.0
+offset_top = 320.0
 offset_right = 768.0
-offset_bottom = 384.0
-text = "Credits"
+offset_bottom = 352.0
+text = "Thanks"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label5" type="Label" parent="label"]
-offset_top = 32.0
-offset_right = 1152.0
-offset_bottom = 192.0
+offset_left = 256.0
+offset_right = 896.0
+offset_bottom = 160.0
 text = "Settings"
 label_settings = SubResource("LabelSettings_4ppmf")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="settings" parent="." instance=ExtResource("2_r6d6q")]
+visible = false
+
 [connection signal="text_submitted" from="Control/max_fps" to="." method="_on_max_fps_text_submitted"]
 [connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/Button2" to="." method="_on_button_2_pressed"]
