@@ -1,38 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://i8x3xpyavjyu"]
+[gd_scene load_steps=8 format=3 uid="uid://i8x3xpyavjyu"]
 
 [ext_resource type="Script" uid="uid://dquyodh7xrvqd" path="res://main_menu.gd" id="1_06t4h"]
 
-[sub_resource type="FontFile" id="FontFile_7vrkn"]
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/17/0/ascent = 0.0
-cache/0/17/0/descent = 0.0
-cache/0/17/0/underline_position = 0.0
-cache/0/17/0/underline_thickness = 0.0
-cache/0/17/0/scale = 1.0
-cache/0/64/0/ascent = 0.0
-cache/0/64/0/descent = 0.0
-cache/0/64/0/underline_position = 0.0
-cache/0/64/0/underline_thickness = 0.0
-cache/0/64/0/scale = 1.0
-cache/0/256/0/ascent = 0.0
-cache/0/256/0/descent = 0.0
-cache/0/256/0/underline_position = 0.0
-cache/0/256/0/underline_thickness = 0.0
-cache/0/256/0/scale = 1.0
-cache/0/512/0/ascent = 0.0
-cache/0/512/0/descent = 0.0
-cache/0/512/0/underline_position = 0.0
-cache/0/512/0/underline_thickness = 0.0
-cache/0/512/0/scale = 1.0
-
 [sub_resource type="LabelSettings" id="LabelSettings_fu7sn"]
-line_spacing = 17.255
-paragraph_spacing = 10.65
-font = SubResource("FontFile_7vrkn")
+line_spacing = 2.0
+paragraph_spacing = 1.0
 font_size = 512
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_06t4h"]

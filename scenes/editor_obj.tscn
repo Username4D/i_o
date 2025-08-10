@@ -10,7 +10,7 @@ shader = ExtResource("2_tq7bu")
 shader_parameter/scale = Vector2(1, 1)
 shader_parameter/regionPosition = Vector2(32, 0)
 shader_parameter/regionSize = Vector2(31.999, 31.999)
-shader_parameter/tint = Vector4(0.1, 0.1, 0.1, 1)
+shader_parameter/tint = Vector4(1, 1, 1, 1)
 
 [node name="editor_obj" type="Node2D"]
 script = ExtResource("1_qpotj")
