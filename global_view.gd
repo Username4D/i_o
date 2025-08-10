@@ -16,7 +16,7 @@ func _ready() -> void:
 		var user_dir = DirAccess.open("user://")
 		user_dir.make_dir("data")
 		DirAccess.make_dir_absolute("user://data/campaign_info")
-		for i in range(1, 6):
+		for i in range(1, 10):
 			var file = FileAccess.open("user://data/campaign_info/" + var_to_str(i) + ".txt" , FileAccess.WRITE)
 			file.store_string(JSON.stringify({"medal":0,"pb":-1,"unlocked":true}))
 			file.close()

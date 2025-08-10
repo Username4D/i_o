@@ -53,6 +53,7 @@ func _physics_process(delta: float) -> void:
 	velocity.x = speed
 	velocity.y += gravity
 	if Input.is_action_pressed("ui_jump") and is_on_floor() and alive:
+		
 		velocity.y = jump_strength
 		if con_active == false:
 			positions.clear()
@@ -68,6 +69,11 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_jump") and touching_orb:
 		velocity.y = jump_strength
 		orb.use()
+	if Input.is_action_pressed("ui_jump") and alive:
+		if con_active == false:
+			positions.clear()
+			self.get_parent().get_parent().get_parent().get_parent().start(self)
+			con_active = true
 	if  not con_active:
 		velocity = Vector2.ZERO
 	move_and_slide()

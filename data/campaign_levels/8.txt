@@ -1,0 +1,144 @@
+{
+	"meta": {
+		"last_edit": {
+			"day": 10,
+			"month": 8,
+			"weekday": 0,
+			"year": 2025
+		},
+		"medals": [
+			8,
+			12,
+			20
+		],
+		"name": "ORB ELEVATOR TM",
+		"palette": [
+			[
+				0.77,
+				0.75,
+				1.0
+			],
+			[
+				0.74,
+				0.88,
+				0.81
+			],
+			[
+				0.7,
+				1.0,
+				0.59
+			]
+		],
+		"spawn": "(144.0, 528.0)"
+	},
+	"objects": [
+		{
+			"object": "block",
+			"position": "(272.0, 368.0)",
+			"rotation": 0.0,
+			"scale": "(-3.0, -11.0)"
+		},
+		{
+			"object": "orb",
+			"position": "(144.0, 464.0)",
+			"rotation": 0.0,
+			"scale": "(1.0, 1.0)"
+		},
+		{
+			"object": "orb",
+			"position": "(144.0, 368.0)",
+			"rotation": 0.0,
+			"scale": "(1.0, 1.0)"
+		},
+		{
+			"object": "orb",
+			"position": "(144.0, 272.0)",
+			"rotation": 0.0,
+			"scale": "(1.0, 1.0)"
+		},
+		{
+			"object": "orb",
+			"position": "(144.0, 208.0)",
+			"rotation": 0.0,
+			"scale": "(1.0, 1.0)"
+		},
+		{
+			"object": "spike",
+			"position": "(528.0, 400.0)",
+			"rotation": 0.0,
+			"scale": "(-13.0, 1.0)"
+		},
+		{
+			"object": "block",
+			"position": "(528.0, 464.0)",
+			"rotation": 0.0,
+			"scale": "(-13.0, -3.0)"
+		},
+		{
+			"object": "block",
+			"position": "(528.0, 528.0)",
+			"rotation": 0.0,
+			"scale": "(-13.0, 1.0)"
+		},
+		{
+			"object": "block",
+			"position": "(784.0, 176.0)",
+			"rotation": 0.0,
+			"scale": "(-19.0, -5.0)"
+		},
+		{
+			"object": "orb",
+			"position": "(464.0, 336.0)",
+			"rotation": 0.0,
+			"scale": "(1.0, 1.0)"
+		},
+		{
+			"object": "orb",
+			"position": "(848.0, 368.0)",
+			"rotation": 0.0,
+			"scale": "(1.0, 1.0)"
+		},
+		{
+			"object": "spike",
+			"position": "(656.0, 272.0)",
+			"rotation": 180.0,
+			"scale": "(1.0, 1.0)"
+		},
+		{
+			"object": "spike",
+			"position": "(848.0, 272.0)",
+			"rotation": 180.0,
+			"scale": "(1.0, 1.0)"
+		},
+		{
+			"object": "block",
+			"position": "(1008.0, 464.0)",
+			"rotation": 90.0,
+			"scale": "(-5.0, -5.0)"
+		},
+		{
+			"object": "fin",
+			"position": "(1040.0, 336.0)",
+			"rotation": 0.0,
+			"scale": "(1.0, 1.0)"
+		},
+		{
+			"object": "spike",
+			"position": "(208.0, 368.0)",
+			"rotation": 270.0,
+			"scale": "(1.0, -11.0)"
+		},
+		{
+			"object": "spike",
+			"position": "(80.0, 368.0)",
+			"rotation": 90.0,
+			"scale": "(1.0, -11.0)"
+		},
+		{
+			"object": "orb",
+			"position": "(656.0, 368.0)",
+			"rotation": 0,
+			"scale": "(1.0, 1.0)"
+		}
+	]
+}

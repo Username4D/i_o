@@ -8,7 +8,7 @@ var last: Node
 @export var cright = true
 var next_unlocked = true
 func _ready() -> void:
-	for i in range(1, 6):
+	for i in range(1, 10):
 		var lvl_json = FileAccess.open("res://data/campaign_levels/" + var_to_str(i)+ ".txt", FileAccess.READ)
 		var lvl = JSON.parse_string(lvl_json.get_as_text())
 		var stats_json = FileAccess.open("user://data/campaign_info/" + var_to_str(i)+ ".txt", FileAccess.READ)
