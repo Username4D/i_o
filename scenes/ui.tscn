@@ -130,6 +130,7 @@ one_shot = true
 process_material = SubResource("ParticleProcessMaterial_wm3ai")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_right = 1152.0
 offset_bottom = 672.0
 color = Color(0, 0, 0, 0.137255)
