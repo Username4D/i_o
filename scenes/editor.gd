@@ -136,6 +136,7 @@ func load_from_file(fname):
 func confirm():
 	for i in range(0.0, 20.0,1.0):
 		$settings2.offset.y = 648 * GlobalFunctions.easeInOutQuad(1 -(i / 20.0))
+		$settings2/save.grab_focus()
 		$ColorRect.material.set_shader_parameter("blur_strength", i /10 + 0.1)
 		await get_tree().process_frame
 		await get_tree().process_frame
@@ -172,6 +173,7 @@ func _input(event: InputEvent) -> void:
 func confirm_s():
 	for i in range(0.0, 20.0,1.0):
 		$save.offset.y = 648 * GlobalFunctions.easeInOutQuad(1 -(i / 20.0))
+		$save/save.grab_focus()
 		$ColorRect.material.set_shader_parameter("blur_strength", i /10 + 0.1)
 		await get_tree().process_frame
 		await get_tree().process_frame
@@ -184,6 +186,7 @@ func confirm_s():
 func close_confirm_s():
 	for i in range(0.0, 20.0,1.0):
 			$save.offset.y =648 * GlobalFunctions.easeInOutQuad( i / 20.0)
+			
 			$ColorRect.material.set_shader_parameter("blur_strength",1 - i / 10 + 0.1)
 			await get_tree().process_frame
 			await get_tree().process_frame
