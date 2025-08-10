@@ -53,7 +53,14 @@ func play(lvl):
 	level.campaign = false
 	self.get_parent().add_child(level)
 	self.queue_free()
-
+func delete(lvl, node):
+	var dic = JSON.parse_string(load_lfrom_file("levels.txt"))
+	dic.erase(lvl)
+	save_to_file(JSON.stringify(dic), "data/levels.txt")
+	node.queue_free()
+	var dir = DirAccess.open("user://")
+	dir.remove(lvl+".txt")
+	dir.remove_absolute(lvl+".txt")
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_escape"):
 		self.get_parent().start_black()
@@ -61,3 +68,6 @@ func _process(delta: float) -> void:
 		var new = load("res://main_menu.tscn").instantiate()
 		self.get_parent().add_child(new)
 		self.queue_free()
+func save_to_file(content, fname):
+	var file = FileAccess.open("user://" + fname, FileAccess.WRITE)
+	file.store_string(content)

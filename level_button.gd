@@ -39,3 +39,5 @@ func load_lfrom_file(fname):
 	var file = FileAccess.open("user://" + fname + ".txt", FileAccess.READ)
 	var content = file.get_as_text()
 	return content
+func _on_delete_pressed() -> void:
+	self.get_parent().get_parent().get_parent().delete(lname, self)
