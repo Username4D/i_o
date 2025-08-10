@@ -39,6 +39,8 @@ func _ready() -> void:
 	#self.rotation_degrees = rot
 
 func _on_spike_body_entered(body: Node2D) -> void:
-	if body.is_in_group('player'):
+	if body.is_in_group('player') and self.get_parent().get_parent().get_parent().get_parent().get_parent().running:
 		body.get_parent().get_node("conplayer").die()
+		print(body.position)
+		print("spike")
 		body.die()

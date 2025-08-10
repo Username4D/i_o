@@ -82,8 +82,16 @@ alpha_curve = SubResource("CurveTexture_p7vwb")
 anim_offset_min = 0.35
 anim_offset_max = 0.35
 
-[node name="ui" type="CanvasLayer"]
+[node name="ui" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_gdt2y")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_right = 1152.0
+offset_bottom = 672.0
+color = Color(0, 0, 0, 0.137255)
 
 [node name="Label" type="Label" parent="."]
 offset_right = 1152.0
@@ -128,9 +136,3 @@ texture = ExtResource("5_wm3ai")
 lifetime = 0.5
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_wm3ai")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-offset_right = 1152.0
-offset_bottom = 672.0
-color = Color(0, 0, 0, 0.137255)

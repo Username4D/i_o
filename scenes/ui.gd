@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 
 @onready var bronze = self.get_parent().get_node("timers").get_node("bronze")
 @onready var silver = self.get_parent().get_node("timers").get_node("silver")

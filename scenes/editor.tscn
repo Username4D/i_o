@@ -263,6 +263,7 @@ z_index = 4
 material = SubResource("ShaderMaterial_5tm2q")
 offset_right = 1152.0
 offset_bottom = 672.0
+color = Color(0, 0, 0, 0.423529)
 
 [node name="settings2" parent="." instance=ExtResource("7_5lcyj")]
 layer = 2

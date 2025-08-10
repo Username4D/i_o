@@ -30,6 +30,8 @@ func check_text(obj: Node, sets: Array) -> void:
 		obj.text = obj.placeholder_text
 	if int(obj.text) == 0 or int(obj.text) > 240:
 		obj.text = 240
+	if int(obj.text) == 0 or int(obj.text) < 60:
+		obj.text = 240
 func _process(delta: float) -> void:
 	if $Control/vsync.button_pressed:
 		$Control/max_fps.modulate.a = 0.5

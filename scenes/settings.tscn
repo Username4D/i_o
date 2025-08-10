@@ -43,7 +43,7 @@ offset_left = 512.0
 offset_top = 224.0
 offset_right = 768.0
 offset_bottom = 256.0
-placeholder_text = "Max: 240"
+placeholder_text = "Max: 240, Min: 60"
 
 [node name="vsync" type="CheckButton" parent="Control"]
 layout_mode = 0

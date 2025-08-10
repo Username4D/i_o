@@ -19,6 +19,9 @@ func _ready() -> void:
 	read_json(level_json, 0)
 	player.position = GlobalFunctions.string_to_vector2(meta["spawn"])  - Vector2(64, 0)
 	lvl.get_node("players/conplayer").position = GlobalFunctions.string_to_vector2(meta["spawn"]) - Vector2(64, 0)
+	await get_tree().process_frame
+	player.visible = true
+	
 	lvl.set_meta("palette", meta["palette"]) 
 	apply_colors(lvl, lvl.get_meta("palette"))
 	lvl.set_meta("bronze_time", meta["medals"][2])
@@ -111,6 +114,7 @@ func read_json(stringjs:String, id):
 		ins.scale =GlobalFunctions.string_to_vector2(i["scale"])
 		ins.rotation_degrees = i["rotation"]
 		$level.get_child(id).get_node("obj").add_child(ins)
+
 func escape():
 	if $timers/bronze.paused and running:
 		self.get_parent().start_black()
@@ -151,6 +155,9 @@ func _input(event: InputEvent) -> void:
 		read_json(level_json, 1)
 		player.position = GlobalFunctions.string_to_vector2(meta["spawn"])  - Vector2(64, 0)
 		lvl.get_node("players/conplayer").position = GlobalFunctions.string_to_vector2(meta["spawn"]) - Vector2(64, 0)
+		await get_tree().process_frame
+		player.visible = true
+		
 		lvl.set_meta("palette", meta["palette"]) 
 		started = false
 		running = false
