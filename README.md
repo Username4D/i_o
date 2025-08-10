@@ -5,7 +5,7 @@ i/o is a fast and momentum based platformer. in which youself are your biggest e
 ## Releases:
 
 ### Windows and Linux(Recommended):
-https://github.com/Username4D/i_o/
+https://github.com/Username4D/i_o/release/latest
 
 
 ### Web:
