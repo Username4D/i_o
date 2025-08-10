@@ -59,7 +59,7 @@ func _ready() -> void:
 	
 var stats = [
 	{"use_continue": true, "pos": Vector2(0,0), "fscale": 1, "awaiting signal": null, "text": "Welcome to the tutorial: Dont worry, this is just a quick introduction to show you the game."},
-	{"use_continue": false, "pos": Vector2(576,320), "fscale": 1.5, "awaiting signal": null, "text": "Start by pressing play to head into the level selection. You can always go back using esc, backspace(if youre playing in Browser) or Y."},
+	{"use_continue": false, "pos": Vector2(576,320), "fscale": 1.5, "awaiting signal": null, "text": "Start by pressing play to head into the level selection. You can always go back using esc, tab(if youre playing in Browser) or Y."},
 	{"use_continue": false, "pos": Vector2(576,320), "fscale": 2.5, "awaiting signal": null, "text": "This is your campaign menu, in which you can see your unlocked levels and pbs. You can navigate using left/right. Now head into the first level."},
 	{"use_continue": false, "pos": Vector2(576,320), "fscale": 30, "awaiting signal": null, "text": "Welcome to the first very exciting level: What you can see to your left is the finish, try to get there as fast as possible. If you want to restart press r or B."},
 	{"use_continue": false, "pos": Vector2(800,320), "fscale": 1.5, "awaiting signal": null, "text": "We'll now take a look at the editor. Go ahead and press the editor button. WARNING: Since the editor is way to complex it doesnt have full Controller support. But dont worry, you can finish the tutorial with controller."},
