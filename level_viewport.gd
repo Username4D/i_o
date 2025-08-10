@@ -29,29 +29,6 @@ func _ready() -> void:
 	$timers/gold.wait_time = lvl.get_meta("gold_time")
 	ui_handler.fin.connect(fin)
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_restart"):
-		if not player.not_finished:
-			ui_handler.start.emit()
-		self.get_node('level').get_child(0).queue_free()
-		$timers/bronze.paused = true
-		$timers/silver.paused = true
-		$timers/gold.paused = true
-		var lvl = level.instantiate()
-		$level.add_child(lvl)
-		lvl.name = "level"
-		player = lvl.get_node("players/player")
-		
-		read_json(level_json, 1)
-		player.position = GlobalFunctions.string_to_vector2(meta["spawn"])  - Vector2(64, 0)
-		lvl.get_node("players/conplayer").position = GlobalFunctions.string_to_vector2(meta["spawn"]) - Vector2(64, 0)
-		lvl.set_meta("palette", meta["palette"]) 
-		started = false
-		running = false
-		$ui.get_node("medal display").visible = true
-		$ui.get_node("medal display").frame = 0
-		apply_colors(lvl, lvl.get_meta("palette"))
-	if Input.is_action_just_pressed("ui_escape"):
-		escape()
 	
 	if player:
 		if player.alive == false:
@@ -158,3 +135,27 @@ func escape():
 				ui_handler.settings_closed.emit()
 				$settings.first = true
 				$settings.visible = true
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_restart"):
+		if not player.not_finished:
+			ui_handler.start.emit()
+		self.get_node('level').get_child(0).queue_free()
+		$timers/bronze.paused = true
+		$timers/silver.paused = true
+		$timers/gold.paused = true
+		var lvl = level.instantiate()
+		$level.add_child(lvl)
+		lvl.name = "level"
+		player = lvl.get_node("players/player")
+		
+		read_json(level_json, 1)
+		player.position = GlobalFunctions.string_to_vector2(meta["spawn"])  - Vector2(64, 0)
+		lvl.get_node("players/conplayer").position = GlobalFunctions.string_to_vector2(meta["spawn"]) - Vector2(64, 0)
+		lvl.set_meta("palette", meta["palette"]) 
+		started = false
+		running = false
+		$ui.get_node("medal display").visible = true
+		$ui.get_node("medal display").frame = 0
+		apply_colors(lvl, lvl.get_meta("palette"))
+	if event.is_action_pressed("ui_escape"):
+		escape()

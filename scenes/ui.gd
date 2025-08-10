@@ -84,29 +84,26 @@ func _ready() -> void:
 	ui_handler.settings_closed.connect(transition_end.bind(true))
 func transition_end(sf: bool):
 	if self.get_parent().get_node("level").get_child(0):
-		
-		print("lol")
+		$ColorRect.visible = true
 		for i in range(10, 50, 2):
-			self.get_parent().get_node("level").get_child(0).get_node("ColorRect").material.set_shader_parameter("blur_strength", i / 10)
+			
 			if not sf:
 				$Label.position.y =easeInOutQuad(float(i - 11) / 40) * 224
 				$"medal display".position.y = 592 - easeInOutQuad(float(i - 11) / 40) * 224
-			else:
-				$ColorRect.material.set_shader_parameter("blur_strength", i / 10)
+
 			
 			await get_tree().process_frame
 
 func transition_start(sf: bool):
 	if self.get_parent().get_node("level").get_child(0):
-		
+		$ColorRect.visible = false
 		print("lol")
 		for i in range(10, 50, 2):
-			self.get_parent().get_node("level").get_child(0).get_node("ColorRect").material.set_shader_parameter("blur_strength", 4.01 - i / 10)
+			
 			if not sf:
 				$Label.position.y = 224 - easeInOutQuad(float(i - 11) / 40) * 224
 				$"medal display".position.y = 368 + easeInOutQuad(float(i - 11) / 40) * 224
-			else:
-				$ColorRect.material.set_shader_parameter("blur_strength", 4.01 - i / 10)
+
 			
 			await get_tree().process_frame
 func easeInOutQuad(x) -> float:

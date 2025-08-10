@@ -16,7 +16,10 @@ bg_color = Color(0, 0, 0, 0.490196)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_71mqq"]
 
-[node name="settings" type="CanvasLayer"]
+[node name="settings" type="Control"]
+z_index = 26
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_ncnlc")
 
 [node name="ColorRect" type="ColorRect" parent="."]

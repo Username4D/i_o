@@ -3,6 +3,10 @@ extends Area2D
 @onready var player = self.get_parent().get_node("player")
 var killing = false
 func _physics_process(delta: float) -> void:
+	if player.con_active:
+		$Polygon2D.visible = true
+	else:
+		$Polygon2D.visible = false
 	for i in get_overlapping_bodies():
 		if i.is_in_group("player") and killing:
 			i.die()

@@ -1,11 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://dbkck550073d1"]
+[gd_scene load_steps=18 format=3 uid="uid://dbkck550073d1"]
 
 [ext_resource type="Script" uid="uid://6v2swyvwpexk" path="res://scenes/ui.gd" id="1_gdt2y"]
 [ext_resource type="Texture2D" uid="uid://cclmk8tpueppx" path="res://images/medals/gold_lost.svg" id="2_wm3ai"]
 [ext_resource type="Texture2D" uid="uid://cubugandx88d3" path="res://images/medals/silver_lost.svg" id="3_8dubc"]
 [ext_resource type="Texture2D" uid="uid://hl02tjhbhk8b" path="res://images/medals/bronze_lost.svg" id="4_p7vwb"]
 [ext_resource type="Texture2D" uid="uid://chv3ccflfa3q6" path="res://images/medals/all medals.svg" id="5_wm3ai"]
-[ext_resource type="Shader" uid="uid://diw2qvsudnia7" path="res://resc/blur.gdshader" id="6_8dubc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n86wo"]
 font_size = 41
@@ -83,15 +82,6 @@ alpha_curve = SubResource("CurveTexture_p7vwb")
 anim_offset_min = 0.35
 anim_offset_max = 0.35
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_p7vwb"]
-shader = ExtResource("6_8dubc")
-shader_parameter/blur_radius = 32
-shader_parameter/Darkness = 0.0
-shader_parameter/R = 0.0
-shader_parameter/G = 0.0
-shader_parameter/B = 0.0
-shader_parameter/blur_strength = 0.1
-
 [node name="ui" type="CanvasLayer"]
 script = ExtResource("1_gdt2y")
 
@@ -140,6 +130,6 @@ one_shot = true
 process_material = SubResource("ParticleProcessMaterial_wm3ai")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_p7vwb")
 offset_right = 1152.0
 offset_bottom = 672.0
+color = Color(0, 0, 0, 0.137255)

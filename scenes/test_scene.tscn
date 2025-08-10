@@ -1,22 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://disvp5c67prcm"]
+[gd_scene load_steps=5 format=3 uid="uid://disvp5c67prcm"]
 
-[ext_resource type="Shader" uid="uid://diw2qvsudnia7" path="res://resc/blur.gdshader" id="1_3qnke"]
 [ext_resource type="PackedScene" uid="uid://ckimmf2u0g3lc" path="res://players_default.tscn" id="1_nd71p"]
 [ext_resource type="PackedScene" uid="uid://ogckpwtfoce7" path="res://scenes/block.tscn" id="4_qjeyg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wtsjf"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_7ddre"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3qnke"]
-resource_local_to_scene = true
-shader = ExtResource("1_3qnke")
-shader_parameter/blur_radius = 32
-shader_parameter/Darkness = 0.0
-shader_parameter/R = 0.0
-shader_parameter/G = 0.0
-shader_parameter/B = 0.0
-shader_parameter/blur_strength = 0.1
 
 [node name="test_scene" type="Node2D"]
 material = SubResource("ShaderMaterial_wtsjf")
@@ -57,8 +46,3 @@ mesh = SubResource("QuadMesh_7ddre")
 [node name="foreground" type="Node2D" parent="."]
 position = Vector2(576, 320)
 scale = Vector2(12.16, 7.04)
-
-[node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_3qnke")
-offset_right = 1216.0
-offset_bottom = 704.0
